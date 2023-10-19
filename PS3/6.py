@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 def DFT(f, t):
     N = len(f)
     T = t[-1] - t[0]
+    D_t = T / (N-1)
     F = np.zeros(N, dtype=complex)
     w = np.zeros(N)
     # for p in range(int(-1 * N / 2), int(N / 2 + 1), 1):
@@ -13,7 +14,7 @@ def DFT(f, t):
         for n in range(N):
             F[p] += f[n] * np.exp(-2j * np.pi * p * n / N)
         if p != 0:
-            F[p] = F[p] / (t[p] - t[p-1])
+            F[p] = F[p] / D_t
         w[p] = p * 2 * np.pi / T
 
     # print(w)
@@ -59,7 +60,7 @@ DFT(y, x)
 
 
 # DFT for data
-time, function = np.loadtxt('data_6.txt', unpack=True)
+time, function = np.loadtxt('C:/Users/yx200\Desktop\imperial\yr3\computational_physics\PS3\data_6.txt', unpack=True)
 plotting(time, function, 'time', 'function')
 
 DFT_of_function, angular_frequency = DFT(function, time)
@@ -82,6 +83,7 @@ x = np.linspace(-1, 1, 1000)
 y = create_gaussian(x, 0.1, 0)    # using units of picoseconds (1e-12)
 plotting(x, y, 'time, $10^{-12}$ s', 'normalised gaussian')
 DFT_of_gaussian, angular_frequency_gaussian = DFT(y, x)
+'''
 G_half = int(len(DFT_of_gaussian)/2)
 DFT_of_gaussian = np.array(
     [*DFT_of_gaussian[G_half:], *DFT_of_gaussian[:G_half]])
@@ -89,3 +91,5 @@ DFT_of_gaussian = np.array(
 plt.xlim(1500, 1650)
 plotting(angular_frequency_gaussian, DFT_of_gaussian,
          'angular frequency, $10^{12}$ rad/s', 'DFT of gaussian')
+'''
+plotting(angular_frequency_gaussian, DFT_of_gaussian, 'angular frequency, $10^{12}$ rad/s', 'DFT of gaussian')
