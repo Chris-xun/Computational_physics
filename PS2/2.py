@@ -60,7 +60,6 @@ for i in x:
     print('for ', i, 'x', i, 'matrix, ')
     G.find_largest_eigenvalue()
     y.append(G.eigenvalue)
-plt.title('for -1/3')
 plt.xlabel('size of the 2D matrix')
 plt.ylabel('largest eigenvalue')
 plt.plot(x, y, label='for -1/3')
