@@ -94,13 +94,16 @@ def flipping(L, H):
 def energy(sj, si, H):
     return -J * sj * si - H * sj
 
-L= create_lattice(5, 5)
 
 '''
-for t in [1.5, 2.5]:
+for t in [1.5, 2.5]:   # this is part e
     s = iterate(calculate_main_spin(L), 0, t, iteration_repeats = 20, return_each=True)
     plot(np.linspace(0, len(s), len(s)), s, "iteration", "average spin at this iteration, at temp " + str(t))
 '''
-print('before flipping', L)
-L = flipping(L, 0)
-print('after flipping', L)
+# iterating the flipping process several times and keeping track of the average spin
+L= create_lattice(5, 5)
+average_spin = np.array([])
+for i in range(20):
+    L = flipping(L, 0)
+    average_spin = np.append(average_spin, calculate_main_spin(L))
+plot(np.linspace(0, len(average_spin), len(average_spin)), average_spin, "iteration", "average spin at this iteration")
