@@ -14,14 +14,20 @@ def convert_to_distance(theta1, theta2):
     theta2 = np.radians(theta2)
     return abs(theta1 - theta2) * R_E
 
-# locations are:    TSU, HBK, HER, KMH, data stored in that order
-locations = ['TSU', 'HBK', 'HER', 'KMH']
+# locations are:    HER, HBK, TSU, KMH, data stored in that order
+locations = ['HER', 'HBK', 'TSU', 'KMH']
 
 # read data
-TSU = pd.read_csv('C:/Users\yx200\Desktop\imperial\yr3\computational_physics\PS2/5_data\TSU.csv')
-HBK = pd.read_csv('C:/Users\yx200\Desktop\imperial\yr3\computational_physics\PS2/5_data\HBK.csv')
 HER = pd.read_csv('C:/Users\yx200\Desktop\imperial\yr3\computational_physics\PS2/5_data\HER.csv')
+HBK = pd.read_csv('C:/Users\yx200\Desktop\imperial\yr3\computational_physics\PS2/5_data\HBK.csv')
+TSU = pd.read_csv('C:/Users\yx200\Desktop\imperial\yr3\computational_physics\PS2/5_data\TSU.csv')
 KMH = pd.read_csv('C:/Users\yx200\Desktop\imperial\yr3\computational_physics\PS2/5_data\KMH.csv')
 
-#x_i = positions of the stations
-#x_j = positions of the lines
+# calculating T matrix and its inverse, only uses the locations of the existing stations
+x = np.array([0, 950, 1700])
+y = np.array([150, 1000, 0])
+
+h = 1
+xi, xj = np.meshgrid(x, x)
+T = mu * h / (h**2 + (xi + xj)**2)
+print(T)

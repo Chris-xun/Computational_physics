@@ -102,8 +102,11 @@ for t in [1.5, 2.5]:   # this is part e
 '''
 # iterating the flipping process several times and keeping track of the average spin
 L= create_lattice(5, 5)
-average_spin = np.array([])
+mean_spin = np.array([])
 for i in range(20):
     L = flipping(L, 0)
-    average_spin = np.append(average_spin, calculate_main_spin(L))
-plot(np.linspace(0, len(average_spin), len(average_spin)), average_spin, "iteration", "average spin at this iteration")
+    mean_spin = np.append(mean_spin, calculate_main_spin(L))
+plot(np.linspace(0, len(mean_spin), len(mean_spin)), mean_spin, "iteration", "average spin at this iteration")
+average_spin = np.mean(mean_spin) 
+
+# part f, using monte carlo method to find net magnetisation & net energy & heat capacity (bascially as done before using dumber ways)
