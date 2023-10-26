@@ -60,5 +60,7 @@ T_y = mu * h / (h**2 + (yi - yj)**2)
 T_y = np.pad(T_y, ((3,0),(3,0)) , mode='constant', constant_values=0)
 T = T_x - T_y
 print(T * 5e9)
+inv = np.linalg.inv(T)
+# print(np.array(np.matmul(T, inv), dtype=int))
 print(invert_by_gauss_jordan_elimination(T))
 
