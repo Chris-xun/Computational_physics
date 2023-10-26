@@ -75,3 +75,4 @@ T_inv = np.linalg.inv(T)
 # print(np.array(np.matmul(T, inv), dtype=int))
 # print(invert_by_gauss_jordan_elimination(T)[0])
 
+# part c, calculating I
