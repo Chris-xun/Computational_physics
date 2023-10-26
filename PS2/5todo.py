@@ -23,17 +23,29 @@ def invert(T):
     T_inv = T_inv / det
     return T_inv
 
+# doesnt work for some reason
 def invert_by_gauss_jordan_elimination(M):
     inv = np.identity(len(M))
+    print('M', M)   
     for j in range(len(M)): # loop over columns
+        print('\n j = ', j)
         # normalising each column and finding the index of the 1 or -1 rows (pivot row)
-        column_max = np.amax(np.abs(M[:,j]))
+        print(np.abs(M[:,j]))
+        column_max = max(np.abs(M[:,j]))
+        print('column max', column_max)
         M[:,j], inv[:,j] = M[:,j]/column_max, inv[:,j]/column_max
+        
         index = np.where((M[:,j] == 1.0) | (M[:,j] == -1.0))[0][0]
         for i in range(len(M)): # loop over rows
             if i != index: # don't act on pivot rows
-                M[i,:] -= M[index,:] * M[i,j]
-                inv[i,:] -= inv[index,:] * M[i,j]
+                if M[i,j] > 0:
+                    M[i,:] -= M[index,:] * M[i,j]
+                    inv[i,:] -= inv[index,:] * M[i,j]
+                elif M[i,j] < 0:
+                    M[i,:] += M[index,:] * M[i,j]
+                    inv[i,:] += inv[index,:] * M[i,j]
+                else:
+                    continue
     return M, inv
 
 # locations are:    HER, HBK, TSU, KMH, data stored in that order
@@ -59,8 +71,7 @@ T_x = np.pad(T_x, ((0,3),(0,3)) , mode='constant', constant_values=0)
 T_y = mu * h / (h**2 + (yi - yj)**2)
 T_y = np.pad(T_y, ((3,0),(3,0)) , mode='constant', constant_values=0)
 T = T_x - T_y
-# print(T * 5e9)
-inv = np.linalg.inv(T)
+T_inv = np.linalg.inv(T)
 # print(np.array(np.matmul(T, inv), dtype=int))
-print(invert_by_gauss_jordan_elimination(T)[0])
+# print(invert_by_gauss_jordan_elimination(T)[0])
 
