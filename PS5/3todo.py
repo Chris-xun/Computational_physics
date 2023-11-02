@@ -84,7 +84,7 @@ def classic_solve (t=np.linspace(0,1,100) , N = 100, x0=0, x_N=1/2, re = False):
     # generating the inverse of the matrix A, taken from PS
     Ai = np.zeros((N-1,N-1))
     for i in range (0,N-1):
-        Ai[i ][0]=1+i-N
+        Ai[i][0]=1+i-N
         Ai [0][i]= Ai[i][0]
         for j in range (1,i+1):
             Ai[i][j]=(j+1)* Ai[i][0]
@@ -160,4 +160,55 @@ def checking_order():
     plt.legend()
     plt.show()
     
-checking_order()
+# checking_order()
+
+
+
+
+# part e, again let mass be 1
+def classic_solve_2 (t=np.linspace(0,1,100) , N = 100, x0=0, x_N=1/2, re = False):
+    dt = t[1] - t[0]
+    # generating the inverse of the matrix A, taken from PS
+    Ai = np.zeros((N-1,N-1))
+    for i in range (0,N-1):
+        Ai[i][0]=1+i-N
+        Ai [0][i]= Ai[i][0]
+        for j in range (1,i+1):
+            Ai[i][j]=(j+1)* Ai[i][0]
+            Ai[j][i]= Ai[i][j]
+    Ai=Ai/N
+    
+    # generating an initial guess for the iterations, first use a linear guess
+    x = t/2
+    b = np.zeros(N-1)
+    iterations = 0
+    
+    # iterating until we get the correct solution that goes through both boundry values
+    while True:
+        # generating/updating b vector
+        for i in range(0, len(b)):
+            b[i] = (3 * x[i] - t[i] ** 3 / 2) * dt ** 2
+        b[0] -= x0
+        b[-1] -= x_N
+        
+        # multiplying to get x vector
+        x_new = np.matmul(Ai, b)
+        
+        # stopping condition
+        if abs(x_new[-1] - x[-1]) < 1e-6:
+            break
+        if iterations > 1000:
+            raise Exception('Does not converge')
+        
+        # updating, parameters and guess of the function
+        x = x_new
+    
+    plotting(t[1:], x, t, analytic(t), 'Classical', 'Analytic')
+    if re:
+        return t[1:], x
+
+classic_solve_2()
+
+
+
+# part f, 4th order Runge-Kutta method
