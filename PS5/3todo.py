@@ -208,8 +208,49 @@ def classic_solve_2 (t=np.linspace(0,1,100) , N = 100, x0=0, x_N=1/2, re = False
     if re:
         return t[1:], x
 
-classic_solve_2()
+# classic_solve_2()
+
 
 
 
 # part f, 4th order Runge-Kutta method
+def RK(t = np.linspace(0, 1, 100), x0=0, y0=1/3, plot=False, re = False):
+    
+    # setting initial values
+    dt = t[1] - t[0]
+    x = np.zeros(len(t))
+    y = np.zeros(len(t))
+    x[0] = x0
+    y[0] = y0
+    half_step = dt / 2
+
+    # iterating through values
+    for i in range(1, len(t)):
+        
+        fa = y[i-1]
+        x_half_later_a = x[i-1] + fa * half_step
+        y_half_later_a = x_half_later_a - x[i-1] / half_step
+        
+        fb = y_half_later_a
+        x_half_later_b = x[i-1] + fb * half_step
+        y_half_later_b = x_half_later_b - x[i-1] / half_step
+        
+        fc = y_half_later_b
+        x_half_later_c = x[i-1] + fc * half_step
+        y_half_later_c = x_half_later_c - x[i-1] / half_step
+        
+        fd = y_half_later_c
+        x_half_later_d = x[i-1] + fd * half_step
+        y_half_later_d = x_half_later_d - x[i-1] / half_step
+        
+        gradient = (fa + 2 * fb + 2 * fc + fd) / 6
+        
+        x[i] = x[i-1] + gradient * dt
+        y[i] = y[i-1] + t[i-1] * dt
+    if plot:
+        plotting(t, x, t, analytic(t), '4th order RK', 'Analytic')
+    if re:
+        return x, y
+    return x[-1]
+
+RK(plot=True)
