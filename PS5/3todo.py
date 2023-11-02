@@ -194,7 +194,7 @@ def classic_solve_2 (t=np.linspace(0,1,100) , N = 100, x0=0, x_N=1/2, re = False
         # multiplying to get x vector
         x_new = np.matmul(Ai, b)
         
-        # stopping condition
+        # stopping condition, need a better stopping condition
         if abs(x_new[-1] - x[-1]) < 1e-6:
             break
         if iterations > 1000:
@@ -203,6 +203,7 @@ def classic_solve_2 (t=np.linspace(0,1,100) , N = 100, x0=0, x_N=1/2, re = False
         # updating, parameters and guess of the function
         x = x_new
     
+    print(iterations)
     plotting(t[1:], x, t, analytic(t), 'Classical', 'Analytic')
     if re:
         return t[1:], x
