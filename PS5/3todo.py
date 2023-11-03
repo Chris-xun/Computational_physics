@@ -213,7 +213,7 @@ def classic_solve_2 (t=np.linspace(0,1,100) , N = 100, x0=0, x_N=1/2, re = False
 
 
 
-# part f, 4th order Runge-Kutta method
+# part f, 4th order Runge-Kutta method   ########################   not working ############################
 def RK(t = np.linspace(0, 1, 100), x0=0, y0=1/3, plot=False, re = False):
     
     # setting initial values
