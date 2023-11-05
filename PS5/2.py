@@ -225,6 +225,12 @@ def AM2(t = np.linspace(0, 1, 100), u0 = 0, v0 = 1, plotting = False, re = False
     if re:
         return t, u, v
     
+    
+def f(u_vector):
+    u = u_vector[1]
+    v = -u_vector[0]
+    return np.array([u, v])
+    
 def RK2(t = np.linspace(0, 1, 100), u0 = 0, v0 = 1, alpha=1/2, plotting = False, re = False):
     
     # defining arrays and variables
@@ -233,12 +239,14 @@ def RK2(t = np.linspace(0, 1, 100), u0 = 0, v0 = 1, alpha=1/2, plotting = False,
     v = np.zeros(len(t))
     u[0] = u0
     v[0] = v0
-    t_plus = 1 + dt ** 2 / 2
-    t_minus = 1 - dt ** 2 / 2
-    G = np.array([[t_minus, dt], [-dt, t_minus]]) / t_plus   # update matrix specific to this problem, time independent so only need to be calculated once, calculated by hand
 
     for i in range(1, len(t)):
-        u[i], v[i] = np.dot(G, np.array([u[i-1], v[i-1]]))    # update u and v using the update matrix
+        u_vector = np.array([u[i-1], v[i-1]])
+        fa = f(u_vector)
+        u_vector_b = u_vector + dt * alpha * fa
+        fb = f(u_vector_b)
+        u_vector_final = u_vector +  ((2 * alpha - 1 ) * fa + fb) * dt / (2 * alpha)
+        u[i], v[i] = u_vector_final[0], u_vector_final[1]
         
     if plotting:
         plt.plot(t, u, label = 'RK2')
@@ -250,4 +258,71 @@ def RK2(t = np.linspace(0, 1, 100), u0 = 0, v0 = 1, alpha=1/2, plotting = False,
     if re:
         return t, u, v
     
-AM2(plotting=True)
+def iterate_second_order(num_of_samples = np.logspace(3, 20, 13, base=2, dtype=int)):
+    # repeating the perfect Euler method for a range of step sizes
+    errors_HOT2 = np.array([])
+    errors_AB2 = np.array([])
+    errors_AM2 = np.array([])
+    errors_RK2 = np.array([])
+    for num in num_of_samples:
+        t_, u, v_ = HOT2(t = np.linspace(0, 1, num), re=True)
+        errors_HOT2 = np.append(errors_HOT2, np.var(u - analytic(t_)))
+        t_, u, v_ = AB2(t = np.linspace(0, 1, num), re=True)
+        errors_AB2 = np.append(errors_AB2, np.var(u - analytic(t_)))
+        t_, u, v_ = AM2(t = np.linspace(0, 1, num), re=True)
+        errors_AM2 = np.append(errors_AM2, np.var(u - analytic(t_)))
+        t_, u, v_ = RK2(t = np.linspace(0, 1, num), re=True)
+        errors_RK2 = np.append(errors_RK2, np.var(u - analytic(t_)))
+    plt.loglog(num_of_samples, errors_HOT2, 'x' , label='HOT2 error')
+    plt.loglog(num_of_samples, errors_AB2, 'x', label='AB2 error')
+    plt.loglog(num_of_samples, errors_AM2, 'x', label='AM2 error')
+    plt.loglog(num_of_samples, errors_RK2, 'x', label='RK2 error')    # HOT2 exactly overlaps with RK2
+    plt.xlabel('number of samples')
+    plt.ylabel('error magnitude')
+    plt.legend()
+    plt.show()
+    
+# iterate_second_order()     # still not reached rounding error limit at > 10**6 samples
+
+
+
+# part e, will only impliment RK4
+def RK4(t = np.linspace(0, 1, 100), u0 = 0, v0 = 1,  plotting = False, re = False):
+    
+    # defining arrays and variables
+    dt = t[1] - t[0]
+    u = np.zeros(len(t))
+    v = np.zeros(len(t))
+    u[0] = u0
+    v[0] = v0
+
+    for i in range(1, len(t)):
+        u_vector = np.array([u[i-1], v[i-1]])
+        fa = f(u_vector)
+        fb = f(u_vector + dt / 2 * fa)
+        fc = f(u_vector + dt / 2 * fb)
+        fd = f(u_vector + dt * fc)
+        u[i], v[i] = u_vector +  (fa + 2*fb + 2*fc + fd) * dt / 6
+        
+    if plotting:
+        plt.plot(t, u,'x' , label = 'RK2')
+        plt.plot(t, analytic(t), label = 'Analytic')
+        plt.grid()
+        plt.legend()
+        plt.show()
+        
+    if re:
+        return t, u, v
+    
+def iterate_fouth_order(num_of_samples = np.logspace(3, 20, 18, base=2, dtype=int)):
+    # repeating the perfect Euler method for a range of step sizes
+    errors = np.array([])
+    for num in num_of_samples:
+        t_, u, v_ = RK4(t = np.linspace(0, 1, num), re=True)
+        errors = np.append(errors, np.var(u - analytic(t_)))
+    plt.loglog(num_of_samples, errors, 'x', label='RK4 error')
+    plt.legend()
+    plt.show()
+
+iterate_fouth_order()
+# rounding error dominates around 4000 samples, which corresponds to dt = 0.00025

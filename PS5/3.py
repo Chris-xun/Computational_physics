@@ -213,44 +213,40 @@ def classic_solve_2 (t=np.linspace(0,1,100) , N = 100, x0=0, x_N=1/2, re = False
 
 
 
-# part f, 4th order Runge-Kutta method   ########################   not working ############################
-def RK(t = np.linspace(0, 1, 100), x0=0, y0=1/3, plot=False, re = False):
+# part f, 4th order Runge-Kutta method
+def f(t, u_vector):
+    u = u_vector[1]
+    v = t
+    return np.array([u, v])
+
+
+# this one solves initial value problems
+def RK4(t = np.linspace(0, 1, 100), u0 = 0, v0 = 1/3,  plot = False, re = False):
     
-    # setting initial values
+    # defining arrays and variables
     dt = t[1] - t[0]
-    x = np.zeros(len(t))
-    y = np.zeros(len(t))
-    x[0] = x0
-    y[0] = y0
-    half_step = dt / 2
+    u = np.zeros(len(t))
+    v = np.zeros(len(t))
+    u[0] = u0
+    v[0] = v0
 
-    # iterating through values
     for i in range(1, len(t)):
+        time = t[i]
+        u_vector = np.array([u[i-1], v[i-1]])
+        fa = f(time, u_vector)
+        fb = f(time, u_vector + dt / 2 * fa)
+        fc = f(time, u_vector + dt / 2 * fb)
+        fd = f(time, u_vector + dt * fc)
+        u[i], v[i] = u_vector +  (fa + 2*fb + 2*fc + fd) * dt / 6
         
-        fa = y[i-1]
-        x_half_later_a = x[i-1] + fa * half_step
-        y_half_later_a = x_half_later_a - x[i-1] / half_step
-        
-        fb = y_half_later_a
-        x_half_later_b = x[i-1] + fb * half_step
-        y_half_later_b = x_half_later_b - x[i-1] / half_step
-        
-        fc = y_half_later_b
-        x_half_later_c = x[i-1] + fc * half_step
-        y_half_later_c = x_half_later_c - x[i-1] / half_step
-        
-        fd = y_half_later_c
-        x_half_later_d = x[i-1] + fd * half_step
-        y_half_later_d = x_half_later_d - x[i-1] / half_step
-        
-        gradient = (fa + 2 * fb + 2 * fc + fd) / 6
-        
-        x[i] = x[i-1] + gradient * dt
-        y[i] = y[i-1] + t[i-1] * dt
     if plot:
-        plotting(t, x, t, analytic(t), '4th order RK', 'Analytic')
+        plt.plot(t, u, label = 'RK2')
+        plt.plot(t, analytic(t), label = 'Analytic')
+        plt.grid()
+        plt.legend()
+        plt.show()
+        
     if re:
-        return x, y
-    return x[-1]
+        return t, u, v
 
-RK(plot=True)
+RK4(plot=True)

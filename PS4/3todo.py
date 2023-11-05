@@ -34,6 +34,9 @@ for i in range(1, 5):
     I, std = MC(f, 0, 10, x)
     print('\nfor ', N, 'number of samples, the standard deviation is ', std)
 
+
+
+
 # part c, now to try the same but in more dimensions
 def MC_2d(f, a1, b1, a2, b2, x, y):
     '''
