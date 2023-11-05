@@ -305,7 +305,7 @@ def RK4(t = np.linspace(0, 1, 100), u0 = 0, v0 = 1,  plotting = False, re = Fals
         u[i], v[i] = u_vector +  (fa + 2*fb + 2*fc + fd) * dt / 6
         
     if plotting:
-        plt.plot(t, u,'x' , label = 'RK2')
+        plt.plot(t, u,'x' , label = 'RK4')
         plt.plot(t, analytic(t), label = 'Analytic')
         plt.grid()
         plt.legend()
@@ -313,6 +313,8 @@ def RK4(t = np.linspace(0, 1, 100), u0 = 0, v0 = 1,  plotting = False, re = Fals
         
     if re:
         return t, u, v
+    
+RK4(plotting=True)
     
 def iterate_fouth_order(num_of_samples = np.logspace(3, 20, 18, base=2, dtype=int)):
     # repeating the perfect Euler method for a range of step sizes
@@ -324,5 +326,5 @@ def iterate_fouth_order(num_of_samples = np.logspace(3, 20, 18, base=2, dtype=in
     plt.legend()
     plt.show()
 
-iterate_fouth_order()
+# iterate_fouth_order()
 # rounding error dominates around 4000 samples, which corresponds to dt = 0.00025
