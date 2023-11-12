@@ -49,22 +49,36 @@ def MC_2d(f, a1, b1, a2, b2, x, y):
     '''
     V = abs(b1 - a1) * abs(b2 - a2)
     N = len(x)
-    f_x = f_circle(x, y)
+    f_x = f(x, y)
     f_average = f_x / N
     I = f_average * V
     variance_f = 1 / (N-1) * (f_x - f_average)**2
     variance_I = variance_f * V**2 / N
     return I, np.sqrt(variance_I)
 
-def f_circle(x_list, y_list, r=1):  # return 1 inside circle, 0 if outside
+def f_circle(x_list, y_list, r=0.5):  # return 1 inside circle, 0 if outside
     num_inside = 0
     for x, y in zip(x_list, y_list):
         if np.sqrt(x**2 + y**2) < r:
             num_inside += 1
     return num_inside
 
-def f_sphere(x, y, r):
-    return np.sqrt(r**2 - x**2 - y**2)
+def f_sphere(x_list, y_list, r=0.5):
+    num_inside = 0
+    random_array = np.random.rand(len(x_list)) - 0.5
+    for x, y, rand in zip(x_list, y_list, random_array):
+        if np.sqrt(x**2 + y**2) < r:
+            z = np.sqrt(r**2 - x**2 - y**2)
+            if rand < z:
+                num_inside += 1
+    return num_inside
 
-I, std = MC_2d(f_circle, 0, 1, 0, 1, np.linspace(-1, 1, 10000), np.linspace(-1, 1, 10000))
-print('integral is: ', I, "\nstandard deviation is:", std)
+random_array_x = np.random.rand(10000)
+random_array_x = random_array_x - 0.5
+random_array_y = np.random.rand(10000)
+random_array_y = random_array_y - 0.5
+I, std = MC_2d(f_circle, -0.5, 0.5, -0.5, 0.5, random_array_x, random_array_y)
+print('For circle:\nAnalytically: ', np.pi/4, 'integral is: ', I, "\nstandard deviation is:", std)
+
+I, std = MC_2d(f_sphere, -0.5, 0.5, -0.5, 0.5, random_array_x, random_array_y)
+print('For sphere:\nAnalytically: ', 4/3 * np.pi * 0.5**3, 'integral is: ', I, "\nstandard deviation is:", std)
