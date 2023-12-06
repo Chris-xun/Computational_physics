@@ -432,7 +432,7 @@ class grid():
             new_total_energy = np.sum(self.T)
             # print('total energy', total_energy)
             change = np.abs(new_total_energy - total_energy)
-            if change < self.d*100:
+            if change < self.d * 100:
                 print('Converged after', iteration, 'iterations')
                 self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png')
                 break
