@@ -33,7 +33,7 @@ with_sink.iterate_K(max_iterations=2000, save=True, save_every=100, save_folder=
     # os.mkdir(f'project_4\\only_mp_natural_convection\\delta_{i}')
     # only_mp.iterate(max_iterations=1000, save=True, save_every=100, save_folder=f'only_mp_natural_convection\\delta_{i}')
 
-
+#
 
 # why is the temperature so high for heat sink?
 # looks like convergence temperature is higher for smaller delta?
