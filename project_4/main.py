@@ -103,7 +103,7 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 lower_limits = []
 upper_limits = []
 for i in range (1, 11):
-    lower_limit, upper_limit = find_ini_T(200,3000, max_iterations=500, nat_conv=False, max_repeat=20 )
+    lower_limit, upper_limit = find_ini_T(200,3000, max_iterations=500, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], nat_conv=False, max_repeat=20 )
     lower_limits.append(lower_limit)
     upper_limits.append(upper_limit)
     
