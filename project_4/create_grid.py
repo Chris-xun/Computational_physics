@@ -4,7 +4,7 @@ import functions as f
 
 class grid():
         
-    def __init__(self, mp_dim=[14e-3,1e-3], case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], delta=[0.01e-3,0.01e-3], debug=False, nat_conv=False, ini_temp=400):
+    def __init__(self, mp_dim=[14e-3,1e-3], case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], delta=[0.01e-3,0.01e-3], debug=False, nat_conv=False, ini_temp=400, v=20):
         '''
         mp_dim: dimensions of the microprocessor    [x, y]           | width, thickness
         case_dim: dimensions of the case            [x, y]           | width, thickness
@@ -21,6 +21,7 @@ class grid():
         self.T_fig_count = 0
         self.K_fig_count = 0
         self.Q_fig_count = 0
+        self.v = v
         
         
         # setting up grid, all in scalled natural units
@@ -140,7 +141,7 @@ class grid():
         
         
         
-    def get_T(self, display=False, save=False, name='temp.png', graph_conut=0):
+    def get_T(self, display=False, save=False, name='temp.png', graph_count=0):
         
         # scaling T back to kelvins
         Temp = np.copy(self.T)
@@ -157,7 +158,7 @@ class grid():
                     if self.K[i+1, j+1] == 0.0:   # +1 as K is still padded
                         mask[i, j] = 1
             
-            plt.figure(str(self.d) + 'T' + str(self.T_fig_count) + str(graph_conut))
+            plt.figure(str(self.d) + 'T' + str(self.T_fig_count) + str(graph_count))
             plt.title('Heat map')
             plt.imshow(np.ma.masked_array(Temp, mask), cmap='bwr', interpolation='nearest', aspect='auto')
             plt.colorbar(label='Temp [K]')
@@ -224,8 +225,7 @@ class grid():
         
         # forced convection, this will be overwriten if natural convection
         if self.nat_conv == False:
-            v = 20
-            h = 11.4 + 5.7 * v
+            h = 11.4 + 5.7 * self.v
             for i in range(1, self.T.shape[0]-1):
                 for j in range(1, self.T.shape[1]-1):
                     
@@ -452,41 +452,51 @@ class grid():
                 # input()
         
 
-    def iterate_K(self, max_iterations=1000, tolerance=1e-3, save=False, save_every=100, save_folder=None, graph_conut=0):
+    def iterate_K(self, max_iterations=1000, tolerance=1e-2, save=False, save_every=100, save_folder=None, graph_count=0, return_=False):
         # iterates the heat sink for a given number of iterations
         iteration = 0
         if save==True:
             self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png')
         
         total_energy = np.sum(self.T)
-        
+        total_energy_middle = 0
+
         while True:
             
             # operating
             self.operate_same_k_in_air()
             iteration += 1
-            print('iteration', iteration)
+            # print('iteration', iteration)
             
             # checking if max iterations reached
             if iteration == max_iterations:
                 print('Did not converge after', iteration, 'iterations')
                 if save == True:
-                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_conut=graph_conut)
+                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
                 break
             
             # checking for convergence
             new_total_energy = np.sum(self.T)
-            # print('total energy', total_energy)
             change = np.abs(new_total_energy - total_energy)
-            if change < self.d * 100:
+            if change < tolerance:
                 print('Converged after', iteration, 'iterations')
-                self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_conut=graph_conut)
+                if save == True:
+                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
                 break
             total_energy = new_total_energy
             
             # saving at every given interval
             if save==True and iteration % save_every == 0:
                 print('iteration', iteration)
-                self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_conut=graph_conut)
-                # input()
+                self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
+
+            if abs(iteration - max_iterations/2) <= 1:
+                total_energy_middle = np.sum(self.T)
+
+        if return_:
+            total_energy_final = np.sum(self.T)
+            return total_energy_middle, total_energy_final
+    
+
+
         
