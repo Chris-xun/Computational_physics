@@ -4,7 +4,7 @@ import functions as f
 
 class grid():
         
-    def __init__(self, mp_dim=[14e-3,1e-3], case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20e-3], delta=[0.01e-3,0.01e-3], debug=False, nat_conv=False, ini_temp=400):
+    def __init__(self, mp_dim=[14e-3,1e-3], case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], delta=[0.01e-3,0.01e-3], debug=False, nat_conv=False, ini_temp=400):
         '''
         mp_dim: dimensions of the microprocessor    [x, y]           | width, thickness
         case_dim: dimensions of the case            [x, y]           | width, thickness
@@ -432,7 +432,7 @@ class grid():
             new_total_energy = np.sum(self.T)
             # print('total energy', total_energy)
             change = np.abs(new_total_energy - total_energy)
-            if change < self.d:
+            if change < self.d*100:
                 print('Converged after', iteration, 'iterations')
                 self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png')
                 break
