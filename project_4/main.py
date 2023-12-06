@@ -23,8 +23,8 @@ graph_count = 0
 # with_case.get_Q(display=True)
 
 
-with_case = cg.grid(sink_dim=None, nat_conv=False, delta=[0.05e-3,0.05e-3], ini_temp=1750)
-with_case.iterate_K(max_iterations=10000, save=True, save_every=100, save_folder='no_sink_forced_convection')
+# with_case = cg.grid(sink_dim=None, nat_conv=False, delta=[0.05e-3,0.05e-3], ini_temp=1750)
+# with_case.iterate_K(max_iterations=10000, save=True, save_every=100, save_folder='no_sink_forced_convection')
 # with_sink = cg.grid(nat_conv=False, delta=[0.1e-3,0.1e-3], ini_temp=350)
 # with_sink.iterate_K(max_iterations=2000, save=True, save_every=100, save_folder='forced_convection',graph_count=graph_count)
 
@@ -41,7 +41,7 @@ with_case.iterate_K(max_iterations=10000, save=True, save_every=100, save_folder
 
 
 # finding initial conditions
-def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, case_dim=None, sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3]):
+def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, case_dim=None, sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3], v=20):
     ''' 
     Tries middle value of the temperature range, then changes upper or lower limit depending on whether the temperature is increasing or decreasing,
     the new temperature to try is the middle of the new range. This repeats until the temperature is accurate to 1 kelvin.
@@ -103,7 +103,7 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 lower_limits = []
 upper_limits = []
 for i in range (1, 11):
-    lower_limit, upper_limit = find_ini_T(200,3000, max_iterations=500, nat_conv=False, max_repeat=20 )
+    lower_limit, upper_limit = find_ini_T(200,3000, max_iterations=500, nat_conv=False, max_repeat=30, v=10*i )
     lower_limits.append(lower_limit)
     upper_limits.append(upper_limit)
     
