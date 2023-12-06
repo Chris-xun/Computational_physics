@@ -6,10 +6,10 @@ import time
 # to prevent multiple axis from showing up, add 1 for each cg.iterate() call
 graph_count = 0 
 
-mp = cg.grid(case_dim=None, sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3], ini_temp=8969)    # 80000> natural > 8000
-# mp.get_K(display=False, save=True, name='project_4/only_mp_natural_convection/K.png')
-# mp.get_Q(display=False, save=True, name='project_4/only_mp_natural_convection/Q.png')
-mp.iterate_K(max_iterations=100000, save=True, save_every=1000, save_folder='only_mp_natural_convection', tolerance=1e-3)
+# mp = cg.grid(case_dim=None, sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3], ini_temp=8969)
+# # mp.get_K(display=False, save=True, name='project_4/only_mp_natural_convection/K.png')
+# # mp.get_Q(display=False, save=True, name='project_4/only_mp_natural_convection/Q.png')
+# mp.iterate_K(max_iterations=100000, save=True, save_every=1000, save_folder='only_mp_natural_convection', tolerance=1e-3)
 
 # t0 = time.time()
 # mp.iterate(max_iterations=1000, save=True, save_every=1000, save_folder='only_mp_natural_convection')
@@ -40,7 +40,7 @@ mp.iterate_K(max_iterations=100000, save=True, save_every=1000, save_folder='onl
 
 
 
-finding initial conditions
+# finding initial conditions
 def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=1000, case_dim=None, sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3]):
     '''
     lower_limit
@@ -83,4 +83,4 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=1000, c
 
         repeat += 1
 
-find_ini_T(7400,7500, case_dim=[20e-3,2e-3])
+find_ini_T(250,500, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20])
