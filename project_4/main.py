@@ -23,8 +23,8 @@ graph_count = 0
 # with_case.get_Q(display=True)
 
 
-# with_case = cg.grid(sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3], ini_temp=7462)
-# with_case.iterate_K(max_iterations=10000, save=True, save_every=300, save_folder='no_sink_natural_convection')
+with_case = cg.grid(sink_dim=None, nat_conv=False, delta=[0.05e-3,0.05e-3], ini_temp=1750)
+with_case.iterate_K(max_iterations=10000, save=True, save_every=100, save_folder='no_sink_forced_convection')
 # with_sink = cg.grid(nat_conv=False, delta=[0.1e-3,0.1e-3], ini_temp=350)
 # with_sink.iterate_K(max_iterations=2000, save=True, save_every=100, save_folder='forced_convection',graph_count=graph_count)
 
@@ -41,7 +41,7 @@ graph_count = 0
 
 
 # finding initial conditions
-def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=1000, case_dim=None, sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3]):
+def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, case_dim=None, sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3]):
     ''' 
     Tries middle value of the temperature range, then changes upper or lower limit depending on whether the temperature is increasing or decreasing,
     the new temperature to try is the middle of the new range. This repeats until the temperature is accurate to 1 kelvin.
@@ -89,8 +89,16 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=1000, c
             print('accurate to 1 kelvin, range is: \n', lower_limit, upper_limit)
             break
 
-
-
         repeat += 1
 
-find_ini_T(250,500, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20])
+    return lower_limit, upper_limit
+
+# find_ini_T(650,700, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], max_iterations=500, max_repeat=5 )   #  T>almost700?
+# find_ini_T(500,3000, case_dim=[20e-3,2e-3], max_iterations=500, nat_conv=False, max_repeat=5 )
+
+# run one for forced convection overnight  v=10*i  i 1to10, use 500 iteration insted of 2000
+# please please plesae test the storing results in an array before using 
+# try if convergence temp is different if more or less data points is used
+# check to remove axis offsets
+lower_limits
+for i in range

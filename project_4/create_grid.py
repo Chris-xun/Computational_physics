@@ -160,8 +160,10 @@ class grid():
             
             plt.figure(str(self.d) + 'T' + str(self.T_fig_count) + str(graph_count))
             plt.title('Heat map')
-            plt.imshow(np.ma.masked_array(Temp, mask), cmap='bwr', interpolation='nearest', aspect='auto')
-            plt.colorbar(label='Temp [K]')
+            # fig, ax = plt.subplots()
+            c = plt.imshow(np.ma.masked_array(Temp, mask), cmap='bwr', interpolation='nearest', aspect='auto')
+            # ax.ticklabel_format(useOffset=False)
+            plt.colorbar(c, label='Temp [K]')
             if self.debug == True:
                 for i in range(self.T.shape[0]):
                     for j in range(self.T.shape[1]):
@@ -223,7 +225,7 @@ class grid():
         # new temperature matrix
         T_new = np.copy(self.T)
         
-        # forced convection, this will be overwriten if natural convection
+        # forced convection
         if self.nat_conv == False:
             h = 11.4 + 5.7 * self.v
             for i in range(1, self.T.shape[0]-1):
@@ -270,10 +272,12 @@ class grid():
                     
                     # calculating the new temperature
                     new_temp = (self.d**2*q+ k1*t[1, 0] + k2*t[1, 2] + k3*t[0, 1] + k4*t[2, 1]) / (k1+k2+k3+k4)
+
                     # print('new temp is ',new_temp)
                     # input()
                     T_new[i, j] = new_temp 
 
+        # natural convection
         else:
             # iterating over every point in the grid
             for i in range(1, self.T.shape[0]-1):
@@ -328,7 +332,7 @@ class grid():
                 
         # updating the temperature matrix
         self.T = np.copy(T_new)
-        # self.get_T(display=display, save=save, name=name)
+        # self.get_T(display=True)
         # return self.T
         
     def operate(self):
@@ -466,7 +470,7 @@ class grid():
             # operating
             self.operate_same_k_in_air()
             iteration += 1
-            # print('iteration', iteration)
+            print('iteration', iteration)
             
             # checking if max iterations reached
             if iteration == max_iterations:
