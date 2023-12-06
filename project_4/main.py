@@ -40,10 +40,20 @@ mp.iterate_K(max_iterations=100000, save=True, save_every=1000, save_folder='onl
 
 
 
-finding initial conditions
+# finding initial conditions
 def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=1000, case_dim=None, sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3]):
-    '''
-    lower_limit
+    ''' 
+    Tries middle value of the temperature range, then changes upper or lower limit depending on whether the temperature is increasing or decreasing,
+    the new temperature to try is the middle of the new range. This repeats until the temperature is accurate to 1 kelvin.
+    
+    lower_limit: lower limit of the temperature range to trial from
+    upper_limit: upper limit of the temperature range to trial from
+    max_iterations: maximum number of iterations to run at each teamperature
+    max_repeat: maximum number of temperatures to try
+    case_dim: dimensions of the case
+    sink_dim: dimensions of the sink
+    nat_conv: whether the system has natural convection
+    delta: grid spacing
     '''
 
     repeat = 0
