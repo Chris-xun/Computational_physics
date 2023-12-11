@@ -624,11 +624,15 @@ class grid():
                 self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
 
             if abs(iteration - max_iterations/2) <= 1:
-                total_energy_middle = np.sum(self.T)
+                highest_T_middle = np.max(self.T)
+                lowest_T_middle = np.min(self.T)
 
         if return_:
-            total_energy_final = np.sum(self.T)
-            return total_energy_middle, total_energy_final
+            highest_T_final = np.max(self.T)
+            lowest_T_final = np.min(self.T)
+            average_T_middle = (highest_T_middle + lowest_T_middle) / 2
+            average_T_final = (highest_T_final + lowest_T_final) / 2
+            return average_T_middle, average_T_final
     
 
 
