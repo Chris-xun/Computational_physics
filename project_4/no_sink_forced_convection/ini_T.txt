@@ -1,0 +1,10 @@
+for speed v = 10 lower limit is : 1998.33984375  upper limit : 2000
+for speed v = 20 lower limit is : 1150.0  upper limit : 2000
+for speed v = 30 lower limit is : 300  upper limit : 2000
+for speed v = 40 lower limit is : 725.0  upper limit : 1150.0
+for speed v = 50 lower limit is : 725.0  upper limit : 937.5
+for speed v = 60 lower limit is : 300  upper limit : 1150.0
+for speed v = 70 lower limit is : 300  upper limit : 1150.0
+for speed v = 80 lower limit is : 645.3125  upper limit : 658.59375
+for speed v = 90 lower limit is : 565.625  upper limit : 618.75
+for speed v = 100 lower limit is : 512.5  upper limit : 618.75

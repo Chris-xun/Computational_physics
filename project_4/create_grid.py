@@ -599,7 +599,6 @@ class grid():
             # operating
             self.operate_same_k_in_air()
             iteration += 1
-            print('iteration', iteration)
             
             # checking if max iterations reached
             if iteration == max_iterations:
@@ -615,17 +614,19 @@ class grid():
                 print('Converged after', iteration, 'iterations')
                 if save == True:
                     self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
-                break
+                return -1, -1
             total_energy = new_total_energy
             
             # saving at every given interval
             if save==True and iteration % save_every == 0:
-                print('iteration', iteration)
+                # print('iteration', iteration, 'change', change)
                 self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
 
             if abs(iteration - max_iterations/2) <= 1:
                 highest_T_middle = np.max(self.T)
                 lowest_T_middle = np.min(self.T)
+            
+            print('iteration', iteration, 'change', change)
 
         if return_:
             highest_T_final = np.max(self.T)

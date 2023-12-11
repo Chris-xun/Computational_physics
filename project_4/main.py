@@ -31,17 +31,6 @@ graph_count = 0
 # with_sink.iterate_K(max_iterations=2000000, save=True, save_every=10000, save_folder='natural_convection\\1pt_per_mm',graph_count=graph_count)
 
 
-# for i in range(1, 10):
-#     only_mp = cg.grid(case_dim=None, sink_dim=None, nat_conv=False, delta=[0.2e-3,0.2e-3], v=i*10, ini_temp=4000)
-    
-#     try:
-#         os.mkdir(f'project_4\\only_mp_forced_convection\\5pt_per_mm\\v_{i*10}')
-#     except:
-#         pass
-#     only_mp.iterate_K(max_iterations=1000000, save=True, save_every=10000, save_folder=f'only_mp_forced_convection\\5pt_per_mm\\v_{i*10}',graph_count=graph_count, tolerance=10e-3)
-#     graph_count += 1
-
-
 
 # finding initial conditions
 def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, case_dim=None, sink_dim=None, nat_conv=False, delta=[0.1e-3,0.1e-3], v=20):
@@ -73,6 +62,11 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 
         system = cg.grid(case_dim=case_dim, sink_dim=sink_dim, nat_conv=nat_conv, delta=delta, ini_temp=temp_to_try, v=v)
         mid, fin = system.iterate_K(max_iterations=max_iterations, return_=True)
+        
+        # if converged no need to continue trying
+        if mid == -1 and fin == -1:
+            return lower_limit, upper_limit
+    
         change = fin - mid
         print(change)
 
@@ -94,7 +88,7 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 
         repeat += 1
 
-    return lower_limit, upper_limit
+    return lower_limit, upper_limit, temp_to_try
 
 # find_ini_T(650,700, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], max_iterations=500, max_repeat=5 )   #  T>almost700?
 # find_ini_T(500,3000, case_dim=[20e-3,2e-3], max_iterations=500, nat_conv=False, max_repeat=5 )
@@ -104,30 +98,71 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 # try if convergence temp is different if more or less data points is used
 
 
-# # check to remove axis offsets
+# for heat sink
 # lower_limits = []
 # upper_limits = []
 # for i in range (6, 11):
-#     lower_limit, upper_limit = find_ini_T(100,1000, max_iterations=500, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], nat_conv=False, max_repeat=10, v=i*10 )
+#     lower_limit, upper_limit, last_tried = find_ini_T(100,1000, max_iterations=500, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], nat_conv=False, max_repeat=10, v=i*10, delta=[0.5e-3,0.5e-3] )
 #     lower_limits.append(lower_limit)
 #     upper_limits.append(upper_limit)
 #     with open('project_4\\ini_T.txt', 'a') as file:
-#         string = 'for speed v = ' + str(i*10) + ' lower limit is : ' + str(lower_limit) + '  upper limit : ' + str(upper_limit)
+#         string = 'for speed v = ' + str(i*10) + ' lower limit is : ' + str(lower_limit) + '  upper limit : ' + str(upper_limit)+ ' last tried : ' + str(last_tried)
 #         file.write(string + '\n')
     
 # print('lower limits are :', lower_limits)
 # print('upper limits are :', upper_limits)
 
-# for mp only
-lower_limits = []
-upper_limits = []
-for i in range (6, 11):
-    lower_limit, upper_limit = find_ini_T(100,1100, max_iterations=3000, case_dim=None, sink_dim=None, nat_conv=False, max_repeat=10, v=i*10 )
-    lower_limits.append(lower_limit)
-    upper_limits.append(upper_limit)
-    with open('project_4\\only_mp_forced_convection\\ini_T.txt', 'a') as file:
-        string = 'for speed v = ' + str(i*10) + ' lower limit is : ' + str(lower_limit) + '  upper limit : ' + str(upper_limit)
-        file.write(string + '\n')
+
+############################### for mp only ###############################
+# lower_limits = []
+# upper_limits = []
+# for i in range (1, 7):
+#     lower_limit, upper_limit, last_tried = find_ini_T(500,4000, max_iterations=3000, case_dim=None, sink_dim=None, nat_conv=False, max_repeat=10, v=i*10 )
+#     lower_limits.append(lower_limit)
+#     upper_limits.append(upper_limit)
+#     with open('project_4\\only_mp_forced_convection\\ini_T.txt', 'a') as file:
+#         string = 'for speed v = ' + str(i*10) + ' lower limit is : ' + str(lower_limit) + '  upper limit : ' + str(upper_limit) + ' last tried : ' + str(last_tried)
+#         file.write(string + '\n')
     
-print('lower limits are :', lower_limits)
-print('upper limits are :', upper_limits)
+# print('lower limits are :', lower_limits)
+# print('upper limits are :', upper_limits)
+
+# ini_temps = [3800, 2235, 1627, 1311, 1114, 981, 886, 813, 757, 712]
+# for i, ini_temp in zip(range(1, 10), ini_temps):
+#     only_mp = cg.grid(case_dim=None, sink_dim=None, nat_conv=False, delta=[0.2e-3,0.2e-3], v=i*10, ini_temp=ini_temp)
+    
+#     if i != 1:
+#         continue
+#     try:
+#         os.mkdir(f'project_4\\only_mp_forced_convection\\5pt_per_mm\\v_{i*10}')
+#     except:
+#         pass
+#     only_mp.iterate_K(max_iterations=1000000, save=True, save_every=10000, save_folder=f'only_mp_forced_convection\\5pt_per_mm\\v_{i*10}',graph_count=graph_count, tolerance=0.1)
+#     graph_count += 1
+
+
+############################### when ceramic case is present ###############################
+# lower_limits = []
+# upper_limits = []
+# for i in range (1, 11):
+#     lower_limit, upper_limit, last_tried = find_ini_T(300,2000, max_iterations=500, case_dim=[20e-3,2e-3], sink_dim=None, nat_conv=False, max_repeat=10, v=i*10, delta=[0.5e-3,0.5e-3] )
+#     lower_limits.append(lower_limit)
+#     upper_limits.append(upper_limit)
+#     with open('project_4\\no_sink_forced_convection\\ini_T.txt', 'a') as file:
+#         string = 'for speed v = ' + str(i*10) + ' lower limit is : ' + str(lower_limit) + '  upper limit : ' + str(upper_limit) + ' last tried : ' + str(last_tried)
+#         file.write(string + '\n')
+    
+# print('lower limits are :', lower_limits)
+# print('upper limits are :', upper_limits)
+
+ini_temps = [>2000, 1575, 1150, 937.5, 831.25, 725, 725, 651.5, 592.2, 565]
+for i, ini_temp in zip(range(1, 10), ini_temps):
+    only_mp = cg.grid(case_dim=None, sink_dim=None, nat_conv=False, delta=[0.2e-3,0.2e-3], v=i*10, ini_temp=ini_temp)
+
+    try:
+        os.mkdir(f'project_4\\no_sink_forced_convection\\5pt_per_mm\\v_{i*10}')
+    except:
+        pass
+    
+    only_mp.iterate_K(max_iterations=1000000, save=True, save_every=10000, save_folder=f'no_sink_forced_convection\\5pt_per_mm\\v_{i*10}',graph_count=graph_count, tolerance=0.1)
+    graph_count += 1
