@@ -1,6 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-
 # conductivities across boundry
 def k(point1, point2):
     k = 2/(1/point1 + 1/point2)

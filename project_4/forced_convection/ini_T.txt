@@ -1,0 +1,481 @@
+for speed v = 10  number of fins = 1 last tried : 2236.279296875  final change : -0.004558599466690794
+for speed v = 20  number of fins = 1 last tried : 1361.865234375  final change : -0.01023427228210494
+for speed v = 30  number of fins = 1 last tried : 1034.228515625  final change : 0.0022621553507633507
+for speed v = 40  number of fins = 1 last tried : 862.353515625  final change : 0.005501744672073983
+for speed v = 50  number of fins = 1 last tried : 756.005859375  final change : -0.0083728262106888
+for speed v = 60  number of fins = 1 last tried : 685.107421875  final change : -0.03814917656563921
+for speed v = 70  number of fins = 1 last tried : 632.470703125  final change : 0.04673770350200357
+for speed v = 80  number of fins = 1 last tried : 593.798828125  final change : 0.03018968372634845
+for speed v = 90  number of fins = 1 last tried : 563.720703125  final change : 0.004092031296750065
+for speed v = 100  number of fins = 1 last tried : 539.013671875  final change : -0.053440848543687025
+for speed v = 10  number of fins = 2 last tried : 1576.708984375  final change : -0.004275509563740343
+for speed v = 20  number of fins = 2 last tried : 1000.927734375  final change : -0.013350004388485104
+for speed v = 30  number of fins = 2 last tried : 785.009765625  final change : 0.013092012857669033
+for speed v = 40  number of fins = 2 last tried : 671.6796875  final change : -1
+for speed v = 50  number of fins = 2 last tried : 602.392578125  final change : 0.014910427918948699
+for speed v = 60  number of fins = 2 last tried : 555.126953125  final change : 0.024561741352954414
+for speed v = 70  number of fins = 2 last tried : 520.751953125  final change : 0.04976973078009905
+for speed v = 80  number of fins = 2 last tried : 494.970703125  final change : 0.05907648929132847
+for speed v = 90  number of fins = 2 last tried : 475.634765625  final change : 0.001986459392355755
+for speed v = 100  number of fins = 2 last tried : 458.447265625  final change : 0.08837532217512489
+for speed v = 10  number of fins = 3 last tried : 1244.775390625  final change : 0.007755951985018328
+for speed v = 20  number of fins = 3 last tried : 818.310546875  final change : -0.0033812501205829903
+for speed v = 30  number of fins = 3 last tried : 659.326171875  final change : -0.03505394232342951
+for speed v = 40  number of fins = 3 last tried : 575.537109375  final change : -0.036383645187015645
+for speed v = 50  number of fins = 3 last tried : 523.974609375  final change : -0.036364608859003056
+for speed v = 60  number of fins = 3 last tried : 489.599609375  final change : -0.07664908865262987
+for speed v = 70  number of fins = 3 last tried : 463.818359375  final change : -0.032760563040937996
+for speed v = 80  number of fins = 3 last tried : 444.482421875  final change : -0.004769607832713518
+for speed v = 90  number of fins = 3 last tried : 430.517578125  final change : 0.013257725433504675
+for speed v = 100  number of fins = 3 last tried : 418.701171875  final change : -0.11823810681744362
+for speed v = 10  number of fins = 4 last tried : 1046.044921875  final change : -0.015628658700734377
+for speed v = 20  number of fins = 4 last tried : 709.814453125  final change : 0.007008329499512911
+for speed v = 30  number of fins = 4 last tried : 583.056640625  final change : 0.04429862555116415
+for speed v = 40  number of fins = 4 last tried : 517.529296875  final change : -0.04700630038860254
+for speed v = 50  number of fins = 4 last tried : 476.708984375  final change : -0.03947610362956766
+for speed v = 60  number of fins = 4 last tried : 448.779296875  final change : -0.004920175408187788
+for speed v = 70  number of fins = 4 last tried : 429.443359375  final change : -0.0577705343348498
+for speed v = 80  number of fins = 4 last tried : 414.404296875  final change : -0.05760029589509941
+for speed v = 90  number of fins = 4 last tried : 402.587890625  final change : 0.08605526797327911
+for speed v = 100  number of fins = 4 last tried : 392.919921875  final change : -0.01801273855380714
+for speed v = 10  number of fins = 5 last tried : 914.990234375  final change : -0.016561807715333998
+for speed v = 20  number of fins = 5 last tried : 637.841796875  final change : -0.042325285874539986
+for speed v = 30  number of fins = 5 last tried : 533.642578125  final change : 0.01858859954518266
+for speed v = 40  number of fins = 5 last tried : 478.857421875  final change : -0.03414350217644824
+for speed v = 50  number of fins = 5 last tried : 445.556640625  final change : 0.0436548410798423
+for speed v = 60  number of fins = 5 last tried : 422.998046875  final change : -0.07867131464445265
+for speed v = 70  number of fins = 5 last tried : 406.884765625  final change : 0.015434467957675224
+for speed v = 80  number of fins = 5 last tried : 393.994140625  final change : 0.0922127827325312
+for speed v = 90  number of fins = 5 last tried : 384.326171875  final change : -0.057861514047544915
+for speed v = 100  number of fins = 5 last tried : 376.806640625  final change : 0.07548039530229289
+for speed v = 10  number of fins = 6 last tried : 822.607421875  final change : -0.020726167800603434
+for speed v = 20  number of fins = 6 last tried : 586.279296875  final change : -0.016846283833729103
+for speed v = 30  number of fins = 6 last tried : 498.193359375  final change : -0.04872112497105263
+for speed v = 40  number of fins = 6 last tried : 450.390625  final change : -1
+for speed v = 50  number of fins = 6 last tried : 422.998046875  final change : -0.026348953048000112
+for speed v = 60  number of fins = 6 last tried : 403.662109375  final change : -0.020889242594421376
+for speed v = 70  number of fins = 6 last tried : 389.697265625  final change : 0.14164060167968273
+for speed v = 80  number of fins = 6 last tried : 380.029296875  final change : -0.14546547194186132
+for speed v = 90  number of fins = 6 last tried : 371.435546875  final change : -0.08915267693737405
+for speed v = 100  number of fins = 6 last tried : 364.990234375  final change : -0.12052350451995153
+for speed v = 10  number of fins = 7 last tried : 753.857421875  final change : -0.012669978750636801
+for speed v = 20  number of fins = 7 last tried : 549.21875  final change : -1
+for speed v = 30  number of fins = 7 last tried : 471.337890625  final change : 0.08277200662269024
+for speed v = 40  number of fins = 7 last tried : 431.591796875  final change : -0.060215793768293224
+for speed v = 50  number of fins = 7 last tried : 406.884765625  final change : 0.05593076643708628
+for speed v = 60  number of fins = 7 last tried : 389.697265625  final change : 0.12846457563136937
+for speed v = 70  number of fins = 7 last tried : 377.880859375  final change : -0.07394486493285513
+for speed v = 80  number of fins = 7 last tried : 369.287109375  final change : -0.1769052754061704
+for speed v = 90  number of fins = 7 last tried : 361.767578125  final change : 0.09861352583538974
+for speed v = 100  number of fins = 7 last tried : 356.396484375  final change : -0.19603462173472508
+for speed v = 10  number of fins = 8 last tried : 697.998046875  final change : -0.019838675652863458
+for speed v = 20  number of fins = 8 last tried : 517.529296875  final change : -0.021003029265557416
+for speed v = 30  number of fins = 8 last tried : 449.853515625  final change : 0.0802252377543482
+for speed v = 40  number of fins = 8 last tried : 414.404296875  final change : -0.013237349303381052
+for speed v = 50  number of fins = 8 last tried : 392.919921875  final change : -0.05158400417712983
+for speed v = 60  number of fins = 8 last tried : 377.880859375  final change : -0.005128307246195618
+for speed v = 70  number of fins = 8 last tried : 368.212890625  final change : 0.019752615742618218
+for speed v = 80  number of fins = 8 last tried : 359.619140625  final change : 0.14291141246212646
+for speed v = 90  number of fins = 8 last tried : 353.173828125  final change : 0.1995084502195823
+for speed v = 100  number of fins = 8 last tried : 348.876953125  final change : 0.04239502919881488
+for speed v = 10  number of fins = 9 last tried : 652.880859375  final change : -0.013381035241764039
+for speed v = 20  number of fins = 9 last tried : 492.822265625  final change : 0.042128208457143046
+for speed v = 30  number of fins = 9 last tried : 432.666015625  final change : 0.07030369895801414
+for speed v = 40  number of fins = 9 last tried : 401.513671875  final change : -0.08804680727189407
+for speed v = 50  number of fins = 9 last tried : 382.177734375  final change : -0.10353452830167953
+for speed v = 60  number of fins = 9 last tried : 369.287109375  final change : -0.15299084157595644
+for speed v = 70  number of fins = 9 last tried : 359.619140625  final change : 0.10000799960835138
+for speed v = 80  number of fins = 9 last tried : 352.099609375  final change : -0.042197702063276665
+for speed v = 90  number of fins = 9 last tried : 346.728515625  final change : 0.17673276182176778
+for speed v = 100  number of fins = 9 last tried : 342.431640625  final change : 0.14806188205693616
+for speed v = 10  number of fins = 10 last tried : 650.732421875  final change : -0.04272821970516816
+for speed v = 20  number of fins = 10 last tried : 491.748046875  final change : -0.07449621136765927
+for speed v = 30  number of fins = 10 last tried : 431.591796875  final change : -0.04532598253717879
+for speed v = 40  number of fins = 10 last tried : 400.439453125  final change : 0.08037831805995665
+for speed v = 50  number of fins = 10 last tried : 381.103515625  final change : 0.12335844927292783
+for speed v = 60  number of fins = 10 last tried : 368.212890625  final change : 0.12865841297025327
+for speed v = 70  number of fins = 10 last tried : 358.544921875  final change : -0.012673741763137514
+for speed v = 80  number of fins = 10 last tried : 352.099609375  final change : -0.15539080390590243
+for speed v = 90  number of fins = 10 last tried : 346.728515625  final change : 0.06573431507422356
+for speed v = 100  number of fins = 10 last tried : 342.431640625  final change : 0.03732726477392134
+for speed v = 10  number of fins = 11 last tried : 588.427734375  final change : -0.03336975967977196
+for speed v = 20  number of fins = 11 last tried : 457.373046875  final change : -0.08385426457971334
+for speed v = 30  number of fins = 11 last tried : 407.958984375  final change : -0.09423513792717131
+for speed v = 40  number of fins = 11 last tried : 382.177734375  final change : -0.1166972115097451
+for speed v = 50  number of fins = 11 last tried : 366.064453125  final change : 0.11914242542843567
+for speed v = 60  number of fins = 11 last tried : 355.322265625  final change : 0.14504666744323913
+for speed v = 70  number of fins = 11 last tried : 347.802734375  final change : -0.15644614536358858
+for speed v = 80  number of fins = 11 last tried : 341.357421875  final change : -0.0015674380229029339
+for speed v = 90  number of fins = 11 last tried : 337.060546875  final change : -0.07825883532859734
+for speed v = 100  number of fins = 11 last tried : 333.837890625  final change : 0.1273278371663764
+for speed v = 10  number of fins = 12 last tried : 563.720703125  final change : 0.052748419519048184
+for speed v = 20  number of fins = 12 last tried : 443.408203125  final change : 0.06903717032400891
+for speed v = 30  number of fins = 12 last tried : 398.291015625  final change : 0.08809608165756799
+for speed v = 40  number of fins = 12 last tried : 374.658203125  final change : 0.1096779945291928
+for speed v = 50  number of fins = 12 last tried : 360.693359375  final change : -0.21095852096914314
+for speed v = 60  number of fins = 12 last tried : 349.951171875  final change : -0.024634291425172705
+for speed v = 70  number of fins = 12 last tried : 343.505859375  final change : -0.20311613808007678
+for speed v = 80  number of fins = 12 last tried : 338.134765625  final change : 0.10609738698622095
+for speed v = 90  number of fins = 12 last tried : 333.837890625  final change : 0.15552153081443976
+for speed v = 100  number of fins = 12 last tried : 330.615234375  final change : -0.25779807775325025
+for speed v = 10  number of fins = 13 last tried : 543.310546875  final change : -0.0032544092973694205
+for speed v = 20  number of fins = 13 last tried : 432.666015625  final change : 0.017651495247264393
+for speed v = 30  number of fins = 13 last tried : 390.771484375  final change : -0.11653788127296139
+for speed v = 40  number of fins = 13 last tried : 368.212890625  final change : 0.18199278708925704
+for speed v = 50  number of fins = 13 last tried : 355.322265625  final change : 0.09512647599331103
+for speed v = 60  number of fins = 13 last tried : 345.654296875  final change : -0.019542715104762465
+for speed v = 70  number of fins = 13 last tried : 339.208984375  final change : -0.05402708949986845
+for speed v = 80  number of fins = 13 last tried : 334.912109375  final change : -0.27097779766336316
+for speed v = 90  number of fins = 13 last tried : 330.615234375  final change : -0.1404349339827604
+for speed v = 100  number of fins = 13 last tried : 327.392578125  final change : 0.3089012496348005
+for speed v = 10  number of fins = 14 last tried : 526.123046875  final change : -0.02132035023532808
+for speed v = 20  number of fins = 14 last tried : 422.998046875  final change : -0.10308273432019632
+for speed v = 30  number of fins = 14 last tried : 383.251953125  final change : 0.16263861011975678
+for speed v = 40  number of fins = 14 last tried : 363.916015625  final change : 0.005509679707756732
+for speed v = 50  number of fins = 14 last tried : 351.025390625  final change : 0.10082099844294135
+for speed v = 60  number of fins = 14 last tried : 342.431640625  final change : 0.15550317387169343
+for speed v = 70  number of fins = 14 last tried : 335.986328125  final change : 0.2860719737363979
+for speed v = 80  number of fins = 14 last tried : 331.689453125  final change : 0.2108767821919173
+for speed v = 90  number of fins = 14 last tried : 328.466796875  final change : -0.3203646808542544
+for speed v = 100  number of fins = 14 last tried : 325.244140625  final change : 0.23826041785650887
+for speed v = 10  number of fins = 15 last tried : 525.048828125  final change : 0.0507293316477444
+for speed v = 20  number of fins = 15 last tried : 421.923828125  final change : 0.07374990124662872
+for speed v = 30  number of fins = 15 last tried : 383.251953125  final change : 0.09922690720122773
+for speed v = 40  number of fins = 15 last tried : 362.841796875  final change : -0.05912986630573869
+for speed v = 50  number of fins = 15 last tried : 351.025390625  final change : 0.036107911575527396
+for speed v = 60  number of fins = 15 last tried : 342.431640625  final change : 0.09053343245977885
+for speed v = 70  number of fins = 15 last tried : 335.986328125  final change : 0.22123417160764802
+for speed v = 80  number of fins = 15 last tried : 331.689453125  final change : 0.14513352042558836
+for speed v = 90  number of fins = 15 last tried : 328.466796875  final change : -0.3894646797089081
+for speed v = 100  number of fins = 15 last tried : 325.244140625  final change : 0.17159137798080337
+for speed v = 10  number of fins = 16 last tried : 498.193359375  final change : -0.062303317739861086
+for speed v = 20  number of fins = 16 last tried : 406.884765625  final change : 0.06076183020195458
+for speed v = 30  number of fins = 16 last tried : 372.509765625  final change : 0.13254132752626901
+for speed v = 40  number of fins = 16 last tried : 355.322265625  final change : 0.01663278174237348
+for speed v = 50  number of fins = 16 last tried : 343.505859375  final change : -0.043426173710031435
+for speed v = 60  number of fins = 16 last tried : 335.986328125  final change : 0.32375875712023117
+for speed v = 70  number of fins = 16 last tried : 330.615234375  final change : -0.013676838683750248
+for speed v = 80  number of fins = 16 last tried : 327.392578125  final change : 0.08883063927351031
+for speed v = 90  number of fins = 16 last tried : 324.169921875  final change : -0.33835698463371955
+for speed v = 100  number of fins = 16 last tried : 320.947265625  final change : 0.4644346431232407
+for speed v = 10  number of fins = 17 last tried : 486.376953125  final change : 0.01916160009568557
+for speed v = 20  number of fins = 17 last tried : 400.439453125  final change : 0.05337320675607771
+for speed v = 30  number of fins = 17 last tried : 368.212890625  final change : 0.08961144433123991
+for speed v = 40  number of fins = 17 last tried : 351.025390625  final change : 0.20221922528435243
+for speed v = 50  number of fins = 17 last tried : 341.357421875  final change : -0.2672561968502123
+for speed v = 60  number of fins = 17 last tried : 333.837890625  final change : 0.23183352221894893
+for speed v = 70  number of fins = 17 last tried : 328.466796875  final change : -0.022770059567847056
+for speed v = 80  number of fins = 17 last tried : 325.244140625  final change : 0.1833355893541011
+for speed v = 90  number of fins = 17 last tried : 322.021484375  final change : -0.17805717841838486
+for speed v = 100  number of fins = 17 last tried : 319.873046875  final change : -0.3066557435267896
+for speed v = 10  number of fins = 18 last tried : 475.634765625  final change : 0.040894765668781474
+for speed v = 20  number of fins = 18 last tried : 393.994140625  final change : 0.1459196751966374
+for speed v = 30  number of fins = 18 last tried : 363.916015625  final change : 0.14068688994302647
+for speed v = 40  number of fins = 18 last tried : 347.802734375  final change : -0.044348599745717365
+for speed v = 50  number of fins = 18 last tried : 338.134765625  final change : 0.244465642812429
+for speed v = 60  number of fins = 18 last tried : 331.689453125  final change : 0.22304740565596148
+for speed v = 70  number of fins = 18 last tried : 327.392578125  final change : 0.061839419257012196
+for speed v = 80  number of fins = 18 last tried : 323.095703125  final change : 0.3814311341011489
+for speed v = 90  number of fins = 18 last tried : 320.947265625  final change : 0.095069721533946
+for speed v = 100  number of fins = 18 last tried : 318.798828125  final change : 0.0491297954285983
+for speed v = 10  number of fins = 19 last tried : 465.966796875  final change : -0.025365740584675223
+for speed v = 20  number of fins = 19 last tried : 389.697265625  final change : 0.015119703268283047
+for speed v = 30  number of fins = 19 last tried : 360.693359375  final change : -0.1708361924320343
+for speed v = 40  number of fins = 19 last tried : 345.654296875  final change : -0.23131311810720945
+for speed v = 50  number of fins = 19 last tried : 335.44921875  final change : -1
+for speed v = 60  number of fins = 19 last tried : 329.00390625  final change : -1
+for speed v = 70  number of fins = 19 last tried : 325.244140625  final change : 0.23991776107504847
+for speed v = 80  number of fins = 19 last tried : 322.021484375  final change : -0.32880469837982673
+for speed v = 90  number of fins = 19 last tried : 318.798828125  final change : 0.48078644630732015
+for speed v = 100  number of fins = 19 last tried : 316.650390625  final change : 0.5261272826282948
+for speed v = 10  number of fins = 20 last tried : 465.966796875  final change : -0.07247272069798782
+for speed v = 20  number of fins = 20 last tried : 388.623046875  final change : -0.032636999094393104
+for speed v = 30  number of fins = 20 last tried : 360.693359375  final change : -0.22000759171351092
+for speed v = 40  number of fins = 20 last tried : 345.654296875  final change : -0.28149326248967554
+for speed v = 50  number of fins = 20 last tried : 335.986328125  final change : 0.15069002960808575
+for speed v = 60  number of fins = 20 last tried : 329.541015625  final change : 0.24735683119070018
+for speed v = 70  number of fins = 20 last tried : 325.244140625  final change : 0.18914366912576952
+for speed v = 80  number of fins = 20 last tried : 322.021484375  final change : -0.38256227179954294
+for speed v = 90  number of fins = 20 last tried : 318.798828125  final change : 0.429495099819178
+for speed v = 100  number of fins = 20 last tried : 316.650390625  final change : 0.4743086244961887
+for speed v = 10  number of fins = 21 last tried : 449.853515625  final change : 0.06648150229011662
+for speed v = 20  number of fins = 21 last tried : 380.029296875  final change : -0.046970705399871804
+for speed v = 30  number of fins = 21 last tried : 354.248046875  final change : -0.14981695220194524
+for speed v = 40  number of fins = 21 last tried : 340.283203125  final change : 0.2156768124550581
+for speed v = 50  number of fins = 21 last tried : 331.689453125  final change : 0.3268131592485588
+for speed v = 60  number of fins = 21 last tried : 326.318359375  final change : -0.19897028404375305
+for speed v = 70  number of fins = 21 last tried : 322.021484375  final change : -0.1310342961587594
+for speed v = 80  number of fins = 21 last tried : 318.798828125  final change : 0.4810953981068451
+for speed v = 90  number of fins = 21 last tried : 316.650390625  final change : 0.3748311751696747
+for speed v = 100  number of fins = 21 last tried : 314.501953125  final change : 0.5346907349958201
+for speed v = 10  number of fins = 22 last tried : 443.408203125  final change : 0.015077249001478776
+for speed v = 20  number of fins = 22 last tried : 376.806640625  final change : 0.02177312655840069
+for speed v = 30  number of fins = 22 last tried : 351.025390625  final change : 0.22978854752000188
+for speed v = 40  number of fins = 22 last tried : 338.134765625  final change : 0.23795549613714684
+for speed v = 50  number of fins = 22 last tried : 330.615234375  final change : -0.3097136922297068
+for speed v = 60  number of fins = 22 last tried : 325.244140625  final change : 0.08294863362971228
+for speed v = 70  number of fins = 22 last tried : 320.947265625  final change : 0.28134080277595785
+for speed v = 80  number of fins = 22 last tried : 317.1875  final change : -1
+for speed v = 90  number of fins = 22 last tried : 315.576171875  final change : -0.2299059306460549
+for speed v = 100  number of fins = 22 last tried : 313.427734375  final change : -0.05547768446922419
+for speed v = 10  number of fins = 23 last tried : 436.962890625  final change : 0.0197158828668762
+for speed v = 20  number of fins = 23 last tried : 372.509765625  final change : 0.15699694064096548
+for speed v = 30  number of fins = 23 last tried : 348.876953125  final change : 0.15287161045125686
+for speed v = 40  number of fins = 23 last tried : 335.986328125  final change : 0.31997657446481753
+for speed v = 50  number of fins = 23 last tried : 328.466796875  final change : -0.1027423172199633
+for speed v = 60  number of fins = 23 last tried : 323.095703125  final change : 0.44801445535267703
+for speed v = 70  number of fins = 23 last tried : 319.873046875  final change : -0.3147708114447596
+for speed v = 80  number of fins = 23 last tried : 316.650390625  final change : 0.4863568022774416
+for speed v = 90  number of fins = 23 last tried : 314.501953125  final change : 0.494452926228405
+for speed v = 100  number of fins = 23 last tried : 313.427734375  final change : -0.6459295094937261
+for speed v = 10  number of fins = 24 last tried : 430.517578125  final change : 0.08050940206157975
+for speed v = 20  number of fins = 24 last tried : 369.287109375  final change : -0.04748329641006421
+for speed v = 30  number of fins = 24 last tried : 346.728515625  final change : 0.12298144787200727
+for speed v = 40  number of fins = 24 last tried : 334.912109375  final change : -0.26964370062341914
+for speed v = 50  number of fins = 24 last tried : 327.392578125  final change : 0.17623798218846787
+for speed v = 60  number of fins = 24 last tried : 322.021484375  final change : -0.12233476849360159
+for speed v = 70  number of fins = 24 last tried : 318.798828125  final change : 0.2383557930261304
+for speed v = 80  number of fins = 24 last tried : 315.576171875  final change : -0.06894216450382373
+for speed v = 90  number of fins = 24 last tried : 313.427734375  final change : -0.05393508742781705
+for speed v = 100  number of fins = 24 last tried : 312.353515625  final change : 0.25663824461298645
+for speed v = 10  number of fins = 25 last tried : 425.146484375  final change : -0.040224945958470926
+for speed v = 20  number of fins = 25 last tried : 366.064453125  final change : 0.20422008600144181
+for speed v = 30  number of fins = 25 last tried : 344.580078125  final change : 0.1400118993842625
+for speed v = 40  number of fins = 25 last tried : 332.763671875  final change : -0.09786733919463586
+for speed v = 50  number of fins = 25 last tried : 326.318359375  final change : -0.3885879396693781
+for speed v = 60  number of fins = 25 last tried : 320.947265625  final change : 0.3676286586560309
+for speed v = 70  number of fins = 25 last tried : 317.724609375  final change : -0.31091355334501714
+for speed v = 80  number of fins = 25 last tried : 315.576171875  final change : -0.6244028577930294
+for speed v = 90  number of fins = 25 last tried : 313.427734375  final change : -0.602496579173021
+for speed v = 100  number of fins = 25 last tried : 311.279296875  final change : -0.2730418067367282
+for speed v = 10  number of fins = 26 last tried : 419.775390625  final change : 0.12345367015223019
+for speed v = 20  number of fins = 26 last tried : 363.916015625  final change : 0.08294042324996553
+for speed v = 30  number of fins = 26 last tried : 342.431640625  final change : 0.20409562960412586
+for speed v = 40  number of fins = 26 last tried : 331.689453125  final change : 0.13385354918864323
+for speed v = 50  number of fins = 26 last tried : 324.169921875  final change : -0.001681580011791084
+for speed v = 60  number of fins = 26 last tried : 319.873046875  final change : -0.16113981844682712
+for speed v = 70  number of fins = 26 last tried : 316.650390625  final change : 0.3830929588257277
+for speed v = 80  number of fins = 26 last tried : 314.501953125  final change : 0.19564062303470564
+for speed v = 90  number of fins = 26 last tried : 312.353515625  final change : 0.34822483204334276
+for speed v = 100  number of fins = 26 last tried : 311.279296875  final change : -0.8026790148105647
+for speed v = 10  number of fins = 27 last tried : 415.478515625  final change : 0.0869060008553788
+for speed v = 20  number of fins = 27 last tried : 360.693359375  final change : -0.0051033360650762916
+for speed v = 30  number of fins = 27 last tried : 340.283203125  final change : 0.3151243310494465
+for speed v = 40  number of fins = 27 last tried : 330.615234375  final change : -0.39601859885442536
+for speed v = 50  number of fins = 27 last tried : 323.095703125  final change : 0.4571427110931836
+for speed v = 60  number of fins = 27 last tried : 318.798828125  final change : 0.45380086120712804
+for speed v = 70  number of fins = 27 last tried : 315.576171875  final change : -0.11924955835638684
+for speed v = 80  number of fins = 27 last tried : 313.427734375  final change : -0.30792333929639426
+for speed v = 90  number of fins = 27 last tried : 311.279296875  final change : -0.14379310616641305
+for speed v = 100  number of fins = 27 last tried : 310.205078125  final change : 0.3435037936978915
+for speed v = 10  number of fins = 28 last tried : 411.181640625  final change : 0.08782459449139424
+for speed v = 20  number of fins = 28 last tried : 358.544921875  final change : -0.059802942181704566
+for speed v = 30  number of fins = 28 last tried : 339.208984375  final change : -0.19474311435624259
+for speed v = 40  number of fins = 28 last tried : 328.466796875  final change : -0.07446668964985292
+for speed v = 50  number of fins = 28 last tried : 322.021484375  final change : -0.03567522671801271
+for speed v = 60  number of fins = 28 last tried : 317.724609375  final change : -0.033331577436911175
+for speed v = 70  number of fins = 28 last tried : 315.576171875  final change : -0.6215315517220006
+for speed v = 80  number of fins = 28 last tried : 312.353515625  final change : 0.6679928828816628
+for speed v = 90  number of fins = 28 last tried : 311.279296875  final change : -0.635743946506409
+for speed v = 100  number of fins = 28 last tried : 309.130859375  final change : -0.1252229836609331
+for speed v = 10  number of fins = 29 last tried : 406.884765625  final change : 0.1261227445793338
+for speed v = 20  number of fins = 29 last tried : 356.396484375  final change : -0.0812569641857408
+for speed v = 30  number of fins = 29 last tried : 337.060546875  final change : -0.013201385452703107
+for speed v = 40  number of fins = 29 last tried : 327.392578125  final change : 0.3069252758214134
+for speed v = 50  number of fins = 29 last tried : 322.021484375  final change : -0.5285716905636946
+for speed v = 60  number of fins = 29 last tried : 317.724609375  final change : -0.5205492530403717
+for speed v = 70  number of fins = 29 last tried : 314.501953125  final change : 0.2603285453224089
+for speed v = 80  number of fins = 29 last tried : 312.353515625  final change : 0.2163715401038644
+for speed v = 90  number of fins = 29 last tried : 310.205078125  final change : 0.5413328290524078
+for speed v = 100  number of fins = 29 last tried : 309.130859375  final change : -0.5940600083958998
+for speed v = 10  number of fins = 30 last tried : 403.662109375  final change : -0.08249303023330867
+for speed v = 20  number of fins = 30 last tried : 354.248046875  final change : -0.06936179331387393
+for speed v = 30  number of fins = 30 last tried : 335.986328125  final change : 0.21541336151130963
+for speed v = 40  number of fins = 30 last tried : 326.318359375  final change : -0.16300094388861908
+for speed v = 50  number of fins = 30 last tried : 320.947265625  final change : 0.07431474175245967
+for speed v = 60  number of fins = 30 last tried : 316.650390625  final change : 0.2611557574055041
+for speed v = 70  number of fins = 30 last tried : 313.427734375  final change : -0.19497565196070354
+for speed v = 80  number of fins = 30 last tried : 311.279296875  final change : -0.23517542213085108
+for speed v = 90  number of fins = 30 last tried : 310.205078125  final change : 0.10598693399151671
+for speed v = 100  number of fins = 30 last tried : 308.056640625  final change : 0.7960701869778859
+for speed v = 10  number of fins = 31 last tried : 400.439453125  final change : 0.021301331697031856
+for speed v = 20  number of fins = 31 last tried : 352.099609375  final change : -0.024216348872869276
+for speed v = 30  number of fins = 31 last tried : 334.912109375  final change : -0.24750479427166283
+for speed v = 40  number of fins = 31 last tried : 325.244140625  final change : 0.30825015931623057
+for speed v = 50  number of fins = 31 last tried : 319.873046875  final change : -0.3825853440357605
+for speed v = 60  number of fins = 31 last tried : 315.576171875  final change : -0.18439149833284318
+for speed v = 70  number of fins = 31 last tried : 313.427734375  final change : -0.6503630166807852
+for speed v = 80  number of fins = 31 last tried : 311.279296875  final change : -0.6868110872310353
+for speed v = 90  number of fins = 31 last tried : 309.130859375  final change : -0.3294528297010402
+for speed v = 100  number of fins = 31 last tried : 308.056640625  final change : 0.38819378527477966
+for speed v = 10  number of fins = 32 last tried : 397.216796875  final change : -0.14053126948419958
+for speed v = 20  number of fins = 32 last tried : 351.025390625  final change : 0.05428045064036269
+for speed v = 30  number of fins = 32 last tried : 333.837890625  final change : 0.05163738028204534
+for speed v = 40  number of fins = 32 last tried : 324.169921875  final change : -0.13172621704870835
+for speed v = 50  number of fins = 32 last tried : 318.798828125  final change : 0.3283148846530821
+for speed v = 60  number of fins = 32 last tried : 315.576171875  final change : -0.6298693976168579
+for speed v = 70  number of fins = 32 last tried : 312.353515625  final change : 0.41955812932064873
+for speed v = 80  number of fins = 32 last tried : 310.205078125  final change : 0.5489584499919147
+for speed v = 90  number of fins = 32 last tried : 309.130859375  final change : -0.7648090762704669
+for speed v = 100  number of fins = 32 last tried : 306.982421875  final change : -0.019594914119807072
+for speed v = 10  number of fins = 33 last tried : 393.994140625  final change : 0.028762791771441698
+for speed v = 20  number of fins = 33 last tried : 348.876953125  final change : 0.16602973654516973
+for speed v = 30  number of fins = 33 last tried : 332.763671875  final change : -0.3877728959705564
+for speed v = 40  number of fins = 33 last tried : 323.095703125  final change : 0.4293901580895181
+for speed v = 50  number of fins = 33 last tried : 317.724609375  final change : -0.09258214748115279
+for speed v = 60  number of fins = 33 last tried : 314.501953125  final change : 0.318482942871924
+for speed v = 70  number of fins = 33 last tried : 312.353515625  final change : 0.011165982930833707
+for speed v = 80  number of fins = 33 last tried : 310.205078125  final change : 0.14929512017624802
+for speed v = 90  number of fins = 33 last tried : 308.056640625  final change : 0.6954029856242414
+for speed v = 100  number of fins = 33 last tried : 306.982421875  final change : -0.427477864541288
+for speed v = 10  number of fins = 34 last tried : 390.771484375  final change : -0.08628429580130614
+for speed v = 20  number of fins = 34 last tried : 347.802734375  final change : -0.2616988542868057
+for speed v = 30  number of fins = 34 last tried : 330.615234375  final change : -0.018099754917784594
+for speed v = 40  number of fins = 34 last tried : 323.095703125  final change : 0.01936755477800034
+for speed v = 50  number of fins = 34 last tried : 317.724609375  final change : -0.5134136503329501
+for speed v = 60  number of fins = 34 last tried : 313.427734375  final change : -0.08531577434405335
+for speed v = 70  number of fins = 34 last tried : 311.279296875  final change : -0.3971504494838882
+for speed v = 80  number of fins = 34 last tried : 309.130859375  final change : -0.250287678456516
+for speed v = 90  number of fins = 34 last tried : 308.056640625  final change : 0.31667406174892676
+for speed v = 100  number of fins = 34 last tried : 306.982421875  final change : -0.8352708586826338
+for speed v = 10  number of fins = 35 last tried : 390.771484375  final change : -0.11319049366284162
+for speed v = 20  number of fins = 35 last tried : 346.728515625  final change : 0.28446070454083383
+for speed v = 30  number of fins = 35 last tried : 330.615234375  final change : -0.04589810298784869
+for speed v = 40  number of fins = 35 last tried : 322.021484375  final change : -0.0088616912253201
+for speed v = 50  number of fins = 35 last tried : 317.724609375  final change : -0.5432401763173402
+for speed v = 60  number of fins = 35 last tried : 313.427734375  final change : -0.1147681375296088
+for speed v = 70  number of fins = 35 last tried : 311.279296875  final change : -0.42778534178069094
+for speed v = 80  number of fins = 35 last tried : 309.130859375  final change : -0.2811156014286098
+for speed v = 90  number of fins = 35 last tried : 308.056640625  final change : 0.28663783290903666
+for speed v = 100  number of fins = 35 last tried : 306.982421875  final change : -0.868498765899858
+for speed v = 10  number of fins = 36 last tried : 385.400390625  final change : 0.08025037741754204
+for speed v = 20  number of fins = 36 last tried : 344.580078125  final change : 0.09506007298477925
+for speed v = 30  number of fins = 36 last tried : 329.541015625  final change : 0.006205472964211367
+for speed v = 40  number of fins = 36 last tried : 320.947265625  final change : 0.29028452318016207
+for speed v = 50  number of fins = 36 last tried : 315.576171875  final change : -0.043379953465773724
+for speed v = 60  number of fins = 36 last tried : 312.353515625  final change : 0.6259651034743001
+for speed v = 70  number of fins = 36 last tried : 310.205078125  final change : 0.4993733016162878
+for speed v = 80  number of fins = 36 last tried : 308.056640625  final change : 0.8457004772244545
+for speed v = 90  number of fins = 36 last tried : 306.982421875  final change : -0.4408725581561157
+for speed v = 100  number of fins = 36 last tried : 305.908203125  final change : 0.5737986359308707
+for speed v = 10  number of fins = 37 last tried : 383.251953125  final change : 0.030661328666610643
+for speed v = 20  number of fins = 37 last tried : 343.505859375  final change : -0.29941534252429847
+for speed v = 30  number of fins = 37 last tried : 328.466796875  final change : -0.38618410375056555
+for speed v = 40  number of fins = 37 last tried : 319.873046875  final change : -0.089843511392246
+for speed v = 50  number of fins = 37 last tried : 315.576171875  final change : -0.4282717497262638
+for speed v = 60  number of fins = 37 last tried : 312.353515625  final change : 0.26377615075034555
+for speed v = 70  number of fins = 37 last tried : 310.205078125  final change : 0.1379791254112206
+for speed v = 80  number of fins = 37 last tried : 308.056640625  final change : 0.49801250798554975
+for speed v = 90  number of fins = 37 last tried : 306.982421875  final change : -0.819689621886937
+for speed v = 100  number of fins = 37 last tried : 305.908203125  final change : 0.2268903396470705
+for speed v = 10  number of fins = 38 last tried : 380.029296875  final change : -0.00016978694475255907
+for speed v = 20  number of fins = 38 last tried : 341.357421875  final change : -0.05440495317452587
+for speed v = 30  number of fins = 38 last tried : 327.392578125  final change : 0.12455444764054846
+for speed v = 40  number of fins = 38 last tried : 319.873046875  final change : -0.4699110670335358
+for speed v = 50  number of fins = 38 last tried : 314.501953125  final change : 0.5706818986072903
+for speed v = 60  number of fins = 38 last tried : 311.279296875  final change : -0.09834171802867786
+for speed v = 70  number of fins = 38 last tried : 309.130859375  final change : -0.22333884668478277
+for speed v = 80  number of fins = 38 last tried : 308.056640625  final change : 0.15040556379972259
+for speed v = 90  number of fins = 38 last tried : 305.908203125  final change : 0.9803961024808814
+for speed v = 100  number of fins = 38 last tried : 304.833984375  final change : -0.11992748668126296
+for speed v = 10  number of fins = 39 last tried : 377.880859375  final change : -0.012329133605817333
+for speed v = 20  number of fins = 39 last tried : 340.283203125  final change : 0.22385967006266583
+for speed v = 30  number of fins = 39 last tried : 326.318359375  final change : -0.24432406324194744
+for speed v = 40  number of fins = 39 last tried : 318.798828125  final change : 0.3308546406260575
+for speed v = 50  number of fins = 39 last tried : 314.501953125  final change : 0.22179735614918172
+for speed v = 60  number of fins = 39 last tried : 311.279296875  final change : -0.46053088467306225
+for speed v = 70  number of fins = 39 last tried : 309.130859375  final change : -0.5847332575031032
+for speed v = 80  number of fins = 39 last tried : 306.982421875  final change : -0.19728265687444946
+for speed v = 90  number of fins = 39 last tried : 305.908203125  final change : 0.6582109068986028
+for speed v = 100  number of fins = 39 last tried : 304.833984375  final change : -0.46683607443992514
+for speed v = 10  number of fins = 40 last tried : 377.880859375  final change : -0.035683415801031515
+for speed v = 20  number of fins = 40 last tried : 340.283203125  final change : 0.20045129174832255
+for speed v = 30  number of fins = 40 last tried : 326.318359375  final change : -0.2689553208401776
+for speed v = 40  number of fins = 40 last tried : 318.798828125  final change : 0.3067753709256067
+for speed v = 50  number of fins = 40 last tried : 314.501953125  final change : 0.197101377263607
+for speed v = 60  number of fins = 40 last tried : 311.279296875  final change : -0.486911888117902
+for speed v = 70  number of fins = 40 last tried : 309.130859375  final change : -0.611808976795146
+for speed v = 80  number of fins = 40 last tried : 306.982421875  final change : -0.22406617246451788
+for speed v = 90  number of fins = 40 last tried : 305.908203125  final change : 0.6327013566187816
+for speed v = 100  number of fins = 40 last tried : 304.833984375  final change : -0.49505805381340906
+
+[[2236.27929688 1361.86523438 1034.22851562  862.35351562  756.00585938
+   685.10742188  632.47070312  593.79882812  563.72070312  539.01367188]
+ [1576.70898438 1000.92773438  785.00976562  671.6796875   602.39257812
+   555.12695312  520.75195312  494.97070312  475.63476562  458.44726562]
+ [1244.77539062  818.31054688  659.32617188  575.53710938  523.97460938
+   489.59960938  463.81835938  444.48242188  430.51757812  418.70117188]
+ [1046.04492188  709.81445312  583.05664062  517.52929688  476.70898438
+   448.77929688  429.44335938  414.40429688  402.58789062  392.91992188]
+ [ 914.99023438  637.84179688  533.64257812  478.85742188  445.55664062
+   422.99804688  406.88476562  393.99414062  384.32617188  376.80664062]
+ [ 822.60742188  586.27929688  498.19335938  450.390625    422.99804688
+   403.66210938  389.69726562  380.02929688  371.43554688  364.99023438]
+ [ 753.85742188  549.21875     471.33789062  431.59179688  406.88476562
+   389.69726562  377.88085938  369.28710938  361.76757812  356.39648438]
+ [ 697.99804688  517.52929688  449.85351562  414.40429688  392.91992188
+   377.88085938  368.21289062  359.61914062  353.17382812  348.87695312]
+ [ 652.88085938  492.82226562  432.66601562  401.51367188  382.17773438
+   369.28710938  359.61914062  352.09960938  346.72851562  342.43164062]
+ [ 650.73242188  491.74804688  431.59179688  400.43945312  381.10351562
+   368.21289062  358.54492188  352.09960938  346.72851562  342.43164062]
+ [ 588.42773438  457.37304688  407.95898438  382.17773438  366.06445312
+   355.32226562  347.80273438  341.35742188  337.06054688  333.83789062]
+ [ 563.72070312  443.40820312  398.29101562  374.65820312  360.69335938
+   349.95117188  343.50585938  338.13476562  333.83789062  330.61523438]
+ [ 543.31054688  432.66601562  390.77148438  368.21289062  355.32226562
+   345.65429688  339.20898438  334.91210938  330.61523438  327.39257812]
+ [ 526.12304688  422.99804688  383.25195312  363.91601562  351.02539062
+   342.43164062  335.98632812  331.68945312  328.46679688  325.24414062]
+ [ 525.04882812  421.92382812  383.25195312  362.84179688  351.02539062
+   342.43164062  335.98632812  331.68945312  328.46679688  325.24414062]
+ [ 498.19335938  406.88476562  372.50976562  355.32226562  343.50585938
+   335.98632812  330.61523438  327.39257812  324.16992188  320.94726562]
+ [ 486.37695312  400.43945312  368.21289062  351.02539062  341.35742188
+   333.83789062  328.46679688  325.24414062  322.02148438  319.87304688]
+ [ 475.63476562  393.99414062  363.91601562  347.80273438  338.13476562
+   331.68945312  327.39257812  323.09570312  320.94726562  318.79882812]
+ [ 465.96679688  389.69726562  360.69335938  345.65429688  335.44921875
+   329.00390625  325.24414062  322.02148438  318.79882812  316.65039062]
+ [ 465.96679688  388.62304688  360.69335938  345.65429688  335.98632812
+   329.54101562  325.24414062  322.02148438  318.79882812  316.65039062]
+ [ 449.85351562  380.02929688  354.24804688  340.28320312  331.68945312
+   326.31835938  322.02148438  318.79882812  316.65039062  314.50195312]
+ [ 443.40820312  376.80664062  351.02539062  338.13476562  330.61523438
+   325.24414062  320.94726562  317.1875      315.57617188  313.42773438]
+ [ 436.96289062  372.50976562  348.87695312  335.98632812  328.46679688
+   323.09570312  319.87304688  316.65039062  314.50195312  313.42773438]
+ [ 430.51757812  369.28710938  346.72851562  334.91210938  327.39257812
+   322.02148438  318.79882812  315.57617188  313.42773438  312.35351562]
+ [ 425.14648438  366.06445312  344.58007812  332.76367188  326.31835938
+   320.94726562  317.72460938  315.57617188  313.42773438  311.27929688]
+ [ 419.77539062  363.91601562  342.43164062  331.68945312  324.16992188
+   319.87304688  316.65039062  314.50195312  312.35351562  311.27929688]
+ [ 415.47851562  360.69335938  340.28320312  330.61523438  323.09570312
+   318.79882812  315.57617188  313.42773438  311.27929688  310.20507812]
+ [ 411.18164062  358.54492188  339.20898438  328.46679688  322.02148438
+   317.72460938  315.57617188  312.35351562  311.27929688  309.13085938]
+ [ 406.88476562  356.39648438  337.06054688  327.39257812  322.02148438
+   317.72460938  314.50195312  312.35351562  310.20507812  309.13085938]
+ [ 403.66210938  354.24804688  335.98632812  326.31835938  320.94726562
+   316.65039062  313.42773438  311.27929688  310.20507812  308.05664062]
+ [ 400.43945312  352.09960938  334.91210938  325.24414062  319.87304688
+   315.57617188  313.42773438  311.27929688  309.13085938  308.05664062]
+ [ 397.21679688  351.02539062  333.83789062  324.16992188  318.79882812
+   315.57617188  312.35351562  310.20507812  309.13085938  306.98242188]
+ [ 393.99414062  348.87695312  332.76367188  323.09570312  317.72460938
+   314.50195312  312.35351562  310.20507812  308.05664062  306.98242188]
+ [ 390.77148438  347.80273438  330.61523438  323.09570312  317.72460938
+   313.42773438  311.27929688  309.13085938  308.05664062  306.98242188]
+ [ 390.77148438  346.72851562  330.61523438  322.02148438  317.72460938
+   313.42773438  311.27929688  309.13085938  308.05664062  306.98242188]
+ [ 385.40039062  344.58007812  329.54101562  320.94726562  315.57617188
+   312.35351562  310.20507812  308.05664062  306.98242188  305.90820312]
+ [ 383.25195312  343.50585938  328.46679688  319.87304688  315.57617188
+   312.35351562  310.20507812  308.05664062  306.98242188  305.90820312]
+ [ 380.02929688  341.35742188  327.39257812  319.87304688  314.50195312
+   311.27929688  309.13085938  308.05664062  305.90820312  304.83398438]
+ [ 377.88085938  340.28320312  326.31835938  318.79882812  314.50195312
+   311.27929688  309.13085938  306.98242188  305.90820312  304.83398438]
+ [ 377.88085938  340.28320312  326.31835938  318.79882812  314.50195312
+   311.27929688  309.13085938  306.98242188  305.90820312  304.83398438]]

@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import functions as f
 
+# iterate_K is the improved version of iterate, much faster
+
 class grid():
         
     def __init__(self, mp_dim=[14e-3,1e-3], case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], delta=[0.01e-3,0.01e-3], debug=False, nat_conv=False, ini_temp=400, v=20):
@@ -137,9 +139,7 @@ class grid():
         self.T = np.pad(self.T, (1,1), 'constant', constant_values=0)
         self.K = np.pad(self.K, (1,1), 'constant', constant_values=0)
         self.Q = np.pad(self.Q, (1,1), 'constant', constant_values=0)
-        
-        
-        
+            
         
     def get_T(self, display=False, save=False, name='temp.png', graph_count=0):
         
@@ -176,7 +176,6 @@ class grid():
 
         self.T_fig_count += 1
         return self.T
-          
             
                 
     def get_K(self, display=False, save=False, name='conductivity.png'):
@@ -199,7 +198,6 @@ class grid():
         return self.K
 
 
-
     def get_Q(self, display=False, save=False, name='power.png'):
         # displays and returns the heat source matrix
         if display == True or save == True:
@@ -220,6 +218,209 @@ class grid():
         return self.Q
     
     
+    
+    # def operate(self):
+    #     # operates the heat sink for 1 interation
+        
+    #     # new temperature matrix
+    #     T_new = np.copy(self.T)
+        
+    #     # forced convection, this will be overwriten if natural convection
+    #     if self.nat_conv == False:
+    #         v = 20
+    #         h = 11.4 + 5.7*v
+    #         # meed tp rewrite fopr forced convection, because it will have different scalling
+
+    #     # iterating over every point in the grid
+    #     for i in range(1, self.T.shape[0]-1):
+    #         for j in range(1, self.T.shape[1]-1):
+                
+    #             # getting the minor matrices & variables, that will affect the point
+    #             k = np.copy(self.K[i-1:i+2, j-1:j+2])
+    #             k_original = np.copy(k)
+    #             t = np.copy(self.T[i-1:i+2, j-1:j+2])
+    #             q = self.Q[i, j]
+    #             # print('before ghosts points are added')
+    #             # print('t', t, '\n k', k)
+                
+    #             # conductivity of 0 is a point in air, which we can safely ignore
+    #             if float(k[1, 1]) == 0.0:
+    #                 T_new[i, j] = 0.0
+    #                 continue
+                
+    #             # adding the ghost conductivities
+    #             if self.nat_conv:
+    #                 h = 1.31* (t[1, 1])**(1/3) 
+
+    #             # adding the ghost conductivities 
+    #             if k[1, 0] == 0.0:    # boundry to the left
+    #                 k[1, 0] = k[1,1]   #h * self.d
+    #             if k[1, 2] == 0.0:    # boundry to the right
+    #                 k[1, 2] = k[1,1]   #h * self.d
+    #             if k[0, 1] == 0.0:    # boundry to the top
+    #                 k[0, 1] = k[1,1]   #h * self.d
+    #             if k[2, 1] == 0.0:    # boundry to the bottom
+    #                 k[2, 1] = k[1,1]   #h * self.d
+                 
+    #             # calculating the average condutivities   
+    #             k1 = f.k(k[1, 1], k[1, 0])  # left
+    #             k2 = f.k(k[1, 1], k[1, 2])  # right
+    #             k3 = f.k(k[1, 1], k[0, 1])  # top
+    #             k4 = f.k(k[1, 1], k[2, 1])  # down
+                
+    #             # adding the ghost temperatures, now to use k_original as the k minor matrix already has ghost values 
+    #             if k_original[1, 0] == 0.0:    # boundry to the left
+    #                 phi = f.phi(t[1, 1], h)
+    #                 t[1, 0] = t[1, 1] - phi * self.d / k1
+    #             if k_original[1, 2] == 0.0:    # boundry to the right
+    #                 phi = f.phi(t[1, 1], h)
+    #                 t[1, 2] = t[1, 1] - phi * self.d / k2
+    #             if k_original[0, 1] == 0.0:    # boundry to the top
+    #                 phi = f.phi(t[1, 1], h)
+    #                 t[0, 1] = t[1, 1] - phi * self.d / k3
+    #             if k_original[2, 1] == 0.0:    # boundry to the bottom
+    #                 phi = f.phi(t[1, 1], h)
+    #                 t[2, 1] = t[1, 1] - phi * self.d / k4
+                
+                
+
+                
+    #             # calculating the new temperature
+    #             new_temp = (self.d**2*q + k1*t[1, 0] + k2*t[1, 2] + k3*t[0, 1] + k4*t[2, 1]) / (k1+k2+k3+k4)
+    #             # print('after ghosts points are added')
+    #             # print('t', t, '\n k', k)
+    #             # print('k1', k1, 'k2', k2, 'k3', k3, 'k4', k4)
+    #             # print('new temp is ',new_temp)
+    #             # input()
+    #             T_new[i, j] = new_temp 
+
+            
+    #     # updating the temperature matrix
+    #     self.T = np.copy(T_new)
+    #     # self.get_T(display=display, save=save, name=name)
+    #     # return self.T
+      
+    #     # operates the heat sink for 1 interation
+        
+    #     # new temperature matrix
+    #     T_new = np.copy(self.T)
+        
+    #     # forced convection
+    #     if self.nat_conv == False:
+    #         h = 11.4 + 5.7 * self.v
+    #         for i in range(1, self.T.shape[0]-1):
+    #             for j in range(1, self.T.shape[1]-1):
+                    
+    #                 # getting the minor matrices & variables, that will affect the point
+    #                 k = np.copy(self.K[i-1:i+2, j-1:j+2])
+    #                 t = np.copy(self.T[i-1:i+2, j-1:j+2])
+    #                 k_center_value = k[1,1]
+    #                 q = self.Q[i, j]
+    #                 # print('before ghosts points are added')
+    #                 # print('t', t, '\n k', k)
+                    
+    #                 # conductivity of 0 is a point in air, which we can safely ignore
+    #                 if float(k[1, 1]) == 0.0:
+    #                     T_new[i, j] = 0.0
+    #                     continue
+                    
+                    
+    #                 # within 1 matrial and not on boundry, this 1 first as its the most common case
+    #                 if k[1, 0]==k_center_value and k[1,2]==k_center_value and k[0,1]==k_center_value and k[2,1]==k_center_value:
+    #                     new_temp = (self.d**2*q+ k_center_value*(t[1, 0] + t[1, 2] + t[0, 1] + t[2, 1])) / (4*k_center_value)
+                    
+    #                 # if on boundry, then not at interface between materials (there are in fact 4 points that are, but its only 4 out of 10,000 )
+    #                 elif k[1, 0]==0.0 or k[1,2]==0 or k[0,1]==0 or k[2,1]==0:
+    #                     # adding the ghost points
+    #                     phi = f.phi(t[1, 1], h) / k[1, 1]  * self.d
+    #                     if k[1, 0] == 0.0:    # boundry to the left
+    #                         t[1, 0] = t[1, 1] - phi
+    #                     if k[1, 2] == 0.0:    # boundry to the right
+    #                         t[1, 2] = t[1, 1] - phi
+    #                     if k[0, 1] == 0.0:    # boundry to the top
+    #                         t[0, 1] = t[1, 1] - phi
+    #                     if k[2, 1] == 0.0:    # boundry to the bottom
+    #                         t[2, 1] = t[1, 1] - phi
+                            
+    #                     # calculating the new temperature
+    #                     new_temp = (self.d**2*q+ k_center_value*(t[1, 0] + t[1, 2] + t[0, 1] + t[2, 1])) / (4*k_center_value)
+                    
+    #                 # if at interface between 2 materials
+    #                 else: 
+    #                     # calculating the average condutivities, this operation is probs faster than checking which value doesnt match
+    #                     k1 = f.k(k[1, 1], k[1, 0])  # left
+    #                     k2 = f.k(k[1, 1], k[1, 2])  # right
+    #                     k3 = f.k(k[1, 1], k[0, 1])  # top
+    #                     k4 = f.k(k[1, 1], k[2, 1])  # down
+                        
+    #                     # calculating the new temperature
+    #                     new_temp = (self.d**2*q+ k1*t[1, 0] + k2*t[1, 2] + k3*t[0, 1] + k4*t[2, 1]) / (k1+k2+k3+k4)
+                        
+                        
+    #                 # print('after ghosts points are added')
+    #                 # print('t', t, '\n k', k)
+    #                 # print('new temp is ',new_temp)
+    #                 # input()
+    #                 T_new[i, j] = new_temp 
+
+    #     # natural convection
+    #     else:
+    #         # iterating over every point in the grid
+    #         for i in range(1, self.T.shape[0]-1):
+    #             for j in range(1, self.T.shape[1]-1):
+                    
+    #                 # getting the minor matrices & variables, that will affect the point
+    #                 k = np.copy(self.K[i-1:i+2, j-1:j+2])
+    #                 t = np.copy(self.T[i-1:i+2, j-1:j+2])
+    #                 q = self.Q[i, j]
+    #                 # print('before ghosts points are added')
+    #                 # print('t', t, '\n k', k)
+                    
+    #                 # conductivity of 0 is a point in air, which we can safely ignore
+    #                 if float(k[1, 1]) == 0.0:
+    #                     T_new[i, j] = 0.0
+    #                     continue
+                        
+    #                 # adding the ghost points
+    #                 h = 1.31*(t[1, 1])**(1/3) 
+    #                 phi = f.phi(t[1, 1], h) / k[1, 1]
+
+    #                 # if on boundry
+    #                 if k[1, 0]==0.0 or k[1,2]==0 or k[0,1]==0 or k[2,1]==0:
+    #                     if k[1, 0] == 0.0:    # boundry to the left
+    #                         k[1, 0] = k[1, 1]
+    #                         t[1, 0] = t[1, 1] - phi * self.d
+    #                     if k[1, 2] == 0.0:    # boundry to the right
+    #                         k[1, 2] = k[1, 1]
+    #                         t[1, 2] = t[1, 1] - phi * self.d
+    #                     if k[0, 1] == 0.0:    # boundry to the top
+    #                         k[0, 1] = k[1, 1]
+    #                         t[0, 1] = t[1, 1] - phi * self.d
+    #                     if k[2, 1] == 0.0:    # boundry to the bottom
+    #                         k[2, 1] = k[1, 1]
+    #                         t[2, 1] = t[1, 1] - phi * self.d
+                    
+    #                 # calculating the average condutivities   
+    #                 k1 = f.k(k[1, 1], k[1, 0])  # left
+    #                 k2 = f.k(k[1, 1], k[1, 2])  # right
+    #                 k3 = f.k(k[1, 1], k[0, 1])  # top
+    #                 k4 = f.k(k[1, 1], k[2, 1])  # down
+                    
+    #                 # print('after ghosts points are added')
+    #                 # print('t', t, '\n k', k)
+                    
+    #                 # calculating the new temperature
+    #                 new_temp = (self.d**2*q+ k1*t[1, 0] + k2*t[1, 2] + k3*t[0, 1] + k4*t[2, 1]) / (k1+k2+k3+k4)
+    #                 # print('new temp is ',new_temp)
+    #                 # input()
+    #                 T_new[i, j] = new_temp 
+
+                
+    #     # updating the temperature matrix
+    #     self.T = np.copy(T_new)
+    #     # self.get_T(display=True)
+    #     # return self.T
+      
     def operate_same_k_in_air(self):
         # operates the heat sink for 1 interation
         
@@ -336,256 +537,52 @@ class grid():
         # self.get_T(display=True)
         # return self.T
         
-    def operate(self):
-        # operates the heat sink for 1 interation
         
-        # new temperature matrix
-        T_new = np.copy(self.T)
+    # def iterate(self, max_iterations=1000, tolerance=1e-3, save=False, save_every=100, save_folder=None, graph_count=0, return_=False):
+    #     # iterates the heat sink for a given number of iterations
+    #     iteration = 0
+    #     if save==True:
+    #         self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png')
         
-        # forced convection, this will be overwriten if natural convection
-        if self.nat_conv == False:
-            v = 20
-            h = 11.4 + 5.7*v
-            # meed tp rewrite fopr forced convection, because it will have different scalling
-
-        # iterating over every point in the grid
-        for i in range(1, self.T.shape[0]-1):
-            for j in range(1, self.T.shape[1]-1):
-                
-                # getting the minor matrices & variables, that will affect the point
-                k = np.copy(self.K[i-1:i+2, j-1:j+2])
-                k_original = np.copy(k)
-                t = np.copy(self.T[i-1:i+2, j-1:j+2])
-                q = self.Q[i, j]
-                # print('before ghosts points are added')
-                # print('t', t, '\n k', k)
-                
-                # conductivity of 0 is a point in air, which we can safely ignore
-                if float(k[1, 1]) == 0.0:
-                    T_new[i, j] = 0.0
-                    continue
-                
-                # adding the ghost conductivities
-                if self.nat_conv:
-                    h = 1.31* (t[1, 1])**(1/3) 
-
-                # adding the ghost conductivities 
-                if k[1, 0] == 0.0:    # boundry to the left
-                    k[1, 0] = k[1,1]   #h * self.d
-                if k[1, 2] == 0.0:    # boundry to the right
-                    k[1, 2] = k[1,1]   #h * self.d
-                if k[0, 1] == 0.0:    # boundry to the top
-                    k[0, 1] = k[1,1]   #h * self.d
-                if k[2, 1] == 0.0:    # boundry to the bottom
-                    k[2, 1] = k[1,1]   #h * self.d
-                 
-                # calculating the average condutivities   
-                k1 = f.k(k[1, 1], k[1, 0])  # left
-                k2 = f.k(k[1, 1], k[1, 2])  # right
-                k3 = f.k(k[1, 1], k[0, 1])  # top
-                k4 = f.k(k[1, 1], k[2, 1])  # down
-                
-                # adding the ghost temperatures, now to use k_original as the k minor matrix already has ghost values 
-                if k_original[1, 0] == 0.0:    # boundry to the left
-                    phi = f.phi(t[1, 1], h)
-                    t[1, 0] = t[1, 1] - phi * self.d / k1
-                if k_original[1, 2] == 0.0:    # boundry to the right
-                    phi = f.phi(t[1, 1], h)
-                    t[1, 2] = t[1, 1] - phi * self.d / k2
-                if k_original[0, 1] == 0.0:    # boundry to the top
-                    phi = f.phi(t[1, 1], h)
-                    t[0, 1] = t[1, 1] - phi * self.d / k3
-                if k_original[2, 1] == 0.0:    # boundry to the bottom
-                    phi = f.phi(t[1, 1], h)
-                    t[2, 1] = t[1, 1] - phi * self.d / k4
-                
-                
-
-                
-                # calculating the new temperature
-                new_temp = (self.d**2*q + k1*t[1, 0] + k2*t[1, 2] + k3*t[0, 1] + k4*t[2, 1]) / (k1+k2+k3+k4)
-                # print('after ghosts points are added')
-                # print('t', t, '\n k', k)
-                # print('k1', k1, 'k2', k2, 'k3', k3, 'k4', k4)
-                # print('new temp is ',new_temp)
-                # input()
-                T_new[i, j] = new_temp 
-
+    #     total_energy = np.sum(self.T)
+        
+    #     while True:
             
-        # updating the temperature matrix
-        self.T = np.copy(T_new)
-        # self.get_T(display=display, save=save, name=name)
-        # return self.T
-      
-    def operate_cheat_K(self):
-        # operates the heat sink for 1 interation
-        
-        # new temperature matrix
-        T_new = np.copy(self.T)
-        
-        # forced convection
-        if self.nat_conv == False:
-            h = 11.4 + 5.7 * self.v
-            for i in range(1, self.T.shape[0]-1):
-                for j in range(1, self.T.shape[1]-1):
-                    
-                    # getting the minor matrices & variables, that will affect the point
-                    k = np.copy(self.K[i-1:i+2, j-1:j+2])
-                    t = np.copy(self.T[i-1:i+2, j-1:j+2])
-                    k_center_value = k[1,1]
-                    q = self.Q[i, j]
-                    # print('before ghosts points are added')
-                    # print('t', t, '\n k', k)
-                    
-                    # conductivity of 0 is a point in air, which we can safely ignore
-                    if float(k[1, 1]) == 0.0:
-                        T_new[i, j] = 0.0
-                        continue
-                    
-                    
-                    # within 1 matrial and not on boundry, this 1 first as its the most common case
-                    if k[1, 0]==k_center_value and k[1,2]==k_center_value and k[0,1]==k_center_value and k[2,1]==k_center_value:
-                        new_temp = (self.d**2*q+ k_center_value*(t[1, 0] + t[1, 2] + t[0, 1] + t[2, 1])) / (4*k_center_value)
-                    
-                    # if on boundry, then not at interface between materials (there are in fact 4 points that are, but its only 4 out of 10,000 )
-                    elif k[1, 0]==0.0 or k[1,2]==0 or k[0,1]==0 or k[2,1]==0:
-                        # adding the ghost points
-                        phi = f.phi(t[1, 1], h) / k[1, 1]  * self.d
-                        if k[1, 0] == 0.0:    # boundry to the left
-                            t[1, 0] = t[1, 1] - phi
-                        if k[1, 2] == 0.0:    # boundry to the right
-                            t[1, 2] = t[1, 1] - phi
-                        if k[0, 1] == 0.0:    # boundry to the top
-                            t[0, 1] = t[1, 1] - phi
-                        if k[2, 1] == 0.0:    # boundry to the bottom
-                            t[2, 1] = t[1, 1] - phi
-                            
-                        # calculating the new temperature
-                        new_temp = (self.d**2*q+ k_center_value*(t[1, 0] + t[1, 2] + t[0, 1] + t[2, 1])) / (4*k_center_value)
-                    
-                    # if at interface between 2 materials
-                    else: 
-                        # calculating the average condutivities, this operation is probs faster than checking which value doesnt match
-                        k1 = f.k(k[1, 1], k[1, 0])  # left
-                        k2 = f.k(k[1, 1], k[1, 2])  # right
-                        k3 = f.k(k[1, 1], k[0, 1])  # top
-                        k4 = f.k(k[1, 1], k[2, 1])  # down
-                        
-                        # calculating the new temperature
-                        new_temp = (self.d**2*q+ k1*t[1, 0] + k2*t[1, 2] + k3*t[0, 1] + k4*t[2, 1]) / (k1+k2+k3+k4)
-                        
-                        
-                    # print('after ghosts points are added')
-                    # print('t', t, '\n k', k)
-                    # print('new temp is ',new_temp)
-                    # input()
-                    T_new[i, j] = new_temp 
-
-        # natural convection
-        else:
-            # iterating over every point in the grid
-            for i in range(1, self.T.shape[0]-1):
-                for j in range(1, self.T.shape[1]-1):
-                    
-                    # getting the minor matrices & variables, that will affect the point
-                    k = np.copy(self.K[i-1:i+2, j-1:j+2])
-                    t = np.copy(self.T[i-1:i+2, j-1:j+2])
-                    q = self.Q[i, j]
-                    # print('before ghosts points are added')
-                    # print('t', t, '\n k', k)
-                    
-                    # conductivity of 0 is a point in air, which we can safely ignore
-                    if float(k[1, 1]) == 0.0:
-                        T_new[i, j] = 0.0
-                        continue
-                        
-                    # adding the ghost points
-                    h = 1.31*(t[1, 1])**(1/3) 
-                    phi = f.phi(t[1, 1], h) / k[1, 1]
-
-                    # if on boundry
-                    if k[1, 0]==0.0 or k[1,2]==0 or k[0,1]==0 or k[2,1]==0:
-                        if k[1, 0] == 0.0:    # boundry to the left
-                            k[1, 0] = k[1, 1]
-                            t[1, 0] = t[1, 1] - phi * self.d
-                        if k[1, 2] == 0.0:    # boundry to the right
-                            k[1, 2] = k[1, 1]
-                            t[1, 2] = t[1, 1] - phi * self.d
-                        if k[0, 1] == 0.0:    # boundry to the top
-                            k[0, 1] = k[1, 1]
-                            t[0, 1] = t[1, 1] - phi * self.d
-                        if k[2, 1] == 0.0:    # boundry to the bottom
-                            k[2, 1] = k[1, 1]
-                            t[2, 1] = t[1, 1] - phi * self.d
-                    
-                    # calculating the average condutivities   
-                    k1 = f.k(k[1, 1], k[1, 0])  # left
-                    k2 = f.k(k[1, 1], k[1, 2])  # right
-                    k3 = f.k(k[1, 1], k[0, 1])  # top
-                    k4 = f.k(k[1, 1], k[2, 1])  # down
-                    
-                    # print('after ghosts points are added')
-                    # print('t', t, '\n k', k)
-                    
-                    # calculating the new temperature
-                    new_temp = (self.d**2*q+ k1*t[1, 0] + k2*t[1, 2] + k3*t[0, 1] + k4*t[2, 1]) / (k1+k2+k3+k4)
-                    # print('new temp is ',new_temp)
-                    # input()
-                    T_new[i, j] = new_temp 
-
-                
-        # updating the temperature matrix
-        self.T = np.copy(T_new)
-        # self.get_T(display=True)
-        # return self.T
-      
-        
-    def iterate(self, max_iterations=1000, tolerance=1e-3, save=False, save_every=100, save_folder=None, graph_count=0, return_=False):
-        # iterates the heat sink for a given number of iterations
-        iteration = 0
-        if save==True:
-            self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png')
-        
-        total_energy = np.sum(self.T)
-        
-        while True:
+    #         # operating
+    #         self.operate()
+    #         iteration += 1
+    #         print('iteration', iteration)
             
-            # operating
-            self.operate_cheat_K()
-            iteration += 1
-            print('iteration', iteration)
+    #         # checking if max iterations reached
+    #         if iteration == max_iterations:
+    #             print('Did not converge after', iteration, 'iterations')
+    #             if save == True:
+    #                 self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
+    #             break
             
-            # checking if max iterations reached
-            if iteration == max_iterations:
-                print('Did not converge after', iteration, 'iterations')
-                if save == True:
-                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
-                break
+    #         # checking for convergence
+    #         new_total_energy = np.sum(self.T)
+    #         change = np.abs(new_total_energy - total_energy)
+    #         if change < tolerance:
+    #             print('Converged after', iteration, 'iterations')
+    #             if save == True:
+    #                 self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
+    #             break
+    #         total_energy = new_total_energy
             
-            # checking for convergence
-            new_total_energy = np.sum(self.T)
-            change = np.abs(new_total_energy - total_energy)
-            if change < tolerance:
-                print('Converged after', iteration, 'iterations')
-                if save == True:
-                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
-                break
-            total_energy = new_total_energy
-            
-            # saving at every given interval
-            if save==True and iteration % save_every == 0:
-                print('iteration', iteration)
-                self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
+    #         # saving at every given interval
+    #         if save==True and iteration % save_every == 0:
+    #             print('iteration', iteration)
+    #             self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
 
-            if abs(iteration - max_iterations/2) <= 1:
-                total_energy_middle = np.sum(self.T)
+    #         if abs(iteration - max_iterations/2) <= 1:
+    #             total_energy_middle = np.sum(self.T)
 
-        if return_:
-            total_energy_final = np.sum(self.T)
-            return total_energy_middle, total_energy_final
+    #     if return_:
+    #         total_energy_final = np.sum(self.T)
+    #         return total_energy_middle, total_energy_final
         
-
-    def iterate_K(self, max_iterations=1000, tolerance=1e-2, save=False, save_every=100, save_folder=None, graph_count=0, return_=False):
+    def iterate_K(self, max_iterations=1000, tolerance=1e-3, save=False, save_every=100, save_folder=None, graph_count=0, return_change=False, return_highest_T=False):
         # iterates the heat sink for a given number of iterations
         iteration = 0
         if save==True:
@@ -609,32 +606,25 @@ class grid():
             
             # checking for convergence
             new_total_energy = np.sum(self.T)
-            change = np.abs(new_total_energy - total_energy)
-            if change < tolerance:
+            change = new_total_energy - total_energy
+            if abs(change) < tolerance:
                 print('Converged after', iteration, 'iterations')
                 if save == True:
                     self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
-                return -1, -1
+                if return_change:
+                    return -1
+                break
             total_energy = new_total_energy
             
             # saving at every given interval
             if save==True and iteration % save_every == 0:
                 # print('iteration', iteration, 'change', change)
                 self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
-
-            if abs(iteration - max_iterations/2) <= 1:
-                highest_T_middle = np.max(self.T)
-                lowest_T_middle = np.min(self.T)
             
             print('iteration', iteration, 'change', change)
 
-        if return_:
-            highest_T_final = np.max(self.T)
-            lowest_T_final = np.min(self.T)
-            average_T_middle = (highest_T_middle + lowest_T_middle) / 2
-            average_T_final = (highest_T_final + lowest_T_final) / 2
-            return average_T_middle, average_T_final
-    
-
-
+        if return_change:
+            return change
         
+        if return_highest_T:
+            return np.max(self.T)
