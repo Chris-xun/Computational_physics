@@ -112,11 +112,11 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 #     string = 'last tried : ' + str(last_tried)
 #     file.write(string + '\n')
 
-with open('project_4\\no_sink_natural_convection\\ini_T.txt', 'r') as file:
-    last_tried = file.readlines()
-last_tried = float(last_tried[0].split(':')[1].strip())
-with_case = cg.grid(sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3], ini_temp=last_tried)
-with_case.iterate_K(max_iterations=10000, save=True, save_every=10000, save_folder='no_sink_natural_convection', tolerance=1e-3, title='No heat sink, Natural convection')
+# with open('project_4\\no_sink_natural_convection\\ini_T.txt', 'r') as file:
+#     last_tried = file.readlines()
+# last_tried = float(last_tried[0].split(':')[1].strip())
+# with_case = cg.grid(sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3], ini_temp=last_tried)
+# with_case.iterate_K(max_iterations=10000, save=True, save_every=10000, save_folder='no_sink_natural_convection', tolerance=1e-3, title='No heat sink, Natural convection')
 
 
 ############################### for heat sink ###############################s
@@ -151,6 +151,8 @@ with_case.iterate_K(max_iterations=10000, save=True, save_every=10000, save_fold
 #         string = 'for fin number = ' + str(i) + ' highest_T : ' + str(highest_T)
 #         file.write(string + '\n')
 
+sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], nat_conv=True, delta=[0.25e-3,0.25e-3], ini_temp=1207.04345703125)
+highest_T = sink.iterate_K(max_iterations=20000, save=True, save_every=20000, save_folder=f'natural_convection\\5pt_per_mm\\change_fin_num\\fins_{20}', return_highest_T=True, tolerance=0.0001, title='Heat sink with 20 fins, Natural convection')
 
 # # how fin height and spacing affects the initial temperature
 # fin_heights = [5, 10, 15, 20, 25, 30]

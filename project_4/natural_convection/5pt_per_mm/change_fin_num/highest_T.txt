@@ -11,7 +11,6 @@ for fin number = 10 highest_T : 1591.9214008597762
 for fin number = 11 highest_T : 1411.3236430960262
 for fin number = 12 highest_T : 1327.3281049560655
 for fin number = 13 highest_T : 1255.0388451501249
-for fin number = 14 highest_T : 1192.3293096164682
 for fin number = 14 highest_T : 1179.5561026508697
 for fin number = 15 highest_T : 1159.8359464252178
 for fin number = 16 highest_T : 1073.025330325007

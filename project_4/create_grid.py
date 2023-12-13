@@ -166,8 +166,8 @@ class grid():
             plt.colorbar(c, label='Temp [C]')
             plt.xlabel('x $[mm]$')
             plt.ylabel('y $[mm]$')
-            plt.xticks(np.arange(0, Temp.shape[1]+0.01, 100), np.arange(0, Temp.shape[1]+0.01, 100)*self.d*1e3)
-            plt.yticks(np.arange(0, Temp.shape[0]+0.01, 10), np.arange(0, Temp.shape[0]+0.01, 10)*self.d*1e3)
+            plt.xticks(np.arange(0, Temp.shape[1], 50), np.arange(0, Temp.shape[1], 50)*self.d*1e3)
+            plt.yticks(np.arange(0, Temp.shape[0], 20), np.arange(0, Temp.shape[0], 20)*self.d*1e3)
             if self.debug == True:
                 for i in range(self.T.shape[0]):
                     for j in range(self.T.shape[1]):
@@ -611,7 +611,7 @@ class grid():
             # checking for convergence
             new_total_energy = np.sum(self.T)
             change = new_total_energy - total_energy
-            if (abs(change) < tolerance and iteration > 12345) or (iteration>1234 and abs(change) > abs(previous_change)):
+            if (abs(change) < tolerance and iteration > 12345) or (iteration>5000 and abs(change) > abs(previous_change)):
                 # setting  minimum number of iterations to make sure it has converged
                 # also checking if the change is increasing, if so, then it has already reached the minimum
                 print('Converged after', iteration, 'iterations')
