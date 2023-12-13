@@ -161,7 +161,7 @@ class grid():
             plt.figure(str(self.d) + 'T' + str(self.T_fig_count) + str(graph_count))
             plt.title('Heat map')
             # fig, ax = plt.subplots()
-            c = plt.imshow(np.ma.masked_array(Temp, mask), interpolation='nearest', aspect='auto', cmap='viridis')
+            c = plt.imshow(np.ma.masked_array(Temp, mask), cmap='viridis', interpolation='nearest', aspect='auto')
             # ax.ticklabel_format(useOffset=False)
             plt.colorbar(c, label='Temp [K]')
             if self.debug == True:
@@ -607,7 +607,7 @@ class grid():
             # checking for convergence
             new_total_energy = np.sum(self.T)
             change = new_total_energy - total_energy
-            if abs(change) < tolerance:
+            if abs(change) < tolerance and iteration > 1234:
                 print('Converged after', iteration, 'iterations')
                 if save == True:
                     self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
