@@ -65,6 +65,7 @@ for speed v = 20  number of fins = 23 highest_T : 149.70055554240827
 for speed v = 20  number of fins = 24 highest_T : 147.87991239786226
 for speed v = 20  number of fins = 25 highest_T : 146.3073420446074
 for speed v = 20  number of fins = 26 highest_T : 99.95978542325844
+
 for speed v = 50  number of fins = 1 highest_T : 576.078099508757
 for speed v = 50  number of fins = 2 highest_T : 411.7950201341834
 for speed v = 50  number of fins = 3 highest_T : 326.5066214290125
