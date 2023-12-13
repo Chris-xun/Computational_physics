@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import scipy.optimize as opt
 
 # Import data
 temperatures = []
@@ -21,5 +22,13 @@ plt.xlabel('Number of fins')
 plt.ylabel('Temperature [$^\circ$C]')
 # plt.show()
 
+# curve fit, looks like a log function
+# def f(x, a, b, c):
+#     return a*np.exp(-b*x) + c
+def f(x, a,b):
+    return a*x + b
+popt, pcov = opt.curve_fit(f,  np.linspace(15,40,25),  temperatures[15:])
+plt.plot(np.linspace(1,40,40), f(np.linspace(1,40,40), *popt))
+plt.show()
 #saving plot
-plt.savefig('project_4\\forced_convection\\fin_num_20ms.png')
+# plt.savefig('project_4\\forced_convection\\fin_num_20ms.png')
