@@ -125,15 +125,15 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 #         string = 'for fin number = ' + str(i) + ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
 #         file.write(string + '\n')
 
-with open('project_4\\natural_convection\\ini_T_change_fin_num.txt', 'r') as file:
-    lines = file.readlines()
-last_tried_values = []
-for line in lines:
-    if 'last tried : ' in line:
-        last_tried = line.split(':')[1].strip()
-        last_tried = last_tried.split(' ')[0].strip()
-        last_tried = float(last_tried)
-        last_tried_values.append(last_tried)
+# with open('project_4\\natural_convection\\ini_T_change_fin_num.txt', 'r') as file:
+#     lines = file.readlines()
+# last_tried_values = []
+# for line in lines:
+#     if 'last tried : ' in line:
+#         last_tried = line.split(':')[1].strip()
+#         last_tried = last_tried.split(' ')[0].strip()
+#         last_tried = float(last_tried)
+#         last_tried_values.append(last_tried)
 
 hightest_Ts = []
 for i in range (1, 40):
