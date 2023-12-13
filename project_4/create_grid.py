@@ -167,7 +167,7 @@ class grid():
             plt.xlabel('x $[mm]$')
             plt.ylabel('y $[mm]$')
             plt.xticks(np.arange(0, Temp.shape[1]+0.01, 100), np.arange(0, Temp.shape[1]+0.01, 100)*self.d*1e3)
-            plt.yticks(np.arange(0, Temp.shape[0]+0.01, 100), np.arange(0, Temp.shape[0]+0.01, 100)*self.d*1e3)
+            plt.yticks(np.arange(0, Temp.shape[0]+0.01, 10), np.arange(0, Temp.shape[0]+0.01, 10)*self.d*1e3)
             if self.debug == True:
                 for i in range(self.T.shape[0]):
                     for j in range(self.T.shape[1]):
