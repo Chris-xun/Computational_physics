@@ -611,7 +611,7 @@ class grid():
             # checking for convergence
             new_total_energy = np.sum(self.T)
             change = new_total_energy - total_energy
-            if (abs(change) < tolerance and iteration > 12345) or (iteration>5000 and abs(change) > abs(previous_change)):
+            if (abs(change) < tolerance and iteration > 12345) or (iteration>1234 and abs(change) > abs(previous_change)):
                 # setting  minimum number of iterations to make sure it has converged
                 # also checking if the change is increasing, if so, then it has already reached the minimum
                 print('Converged after', iteration, 'iterations')
