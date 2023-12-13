@@ -119,23 +119,48 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 
 ############################### for heat sink ###############################s
 # how number of fins affects the initial temperature
+# for i in range (1, 40):
+#     lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,8000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,i], nat_conv=True, max_repeat=40, delta=[1e-3,1e-3], tolerance=1e-5 )
+#     with open('project_4\\natural_convection\\ini_T_change_fin_num.txt', 'a') as file:
+#         string = 'for fin number = ' + str(i) + ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
+#         file.write(string + '\n')
+
+with open('project_4\\natural_convection\\ini_T_change_fin_num.txt', 'r') as file:
+    lines = file.readlines()
+last_tried_values = []
+for line in lines:
+    if 'last tried : ' in line:
+        last_tried = line.split(':')[1].strip()
+        last_tried = last_tried.split(' ')[0].strip()
+        last_tried = float(last_tried)
+        last_tried_values.append(last_tried)
+
+hightest_Ts = []
 for i in range (1, 40):
-    lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,8000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,i], nat_conv=True, max_repeat=40, delta=[1e-3,1e-3], tolerance=1e-5 )
-    with open('project_4\\natural_convection\\ini_T_change_fin_num.txt', 'a') as file:
-        string = 'for fin number = ' + str(i) + ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
+    sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,i], nat_conv=True, delta=[0.2e-3,0.2e-3], ini_temp=last_tried_values[i-1])
+    try:
+        os.mkdir(f'project_4\\natural_convection\\5pt_per_mm\\change_fin_num\\fins_{i}')
+    except:
+        pass
+    highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'natural_convection\\5pt_per_mm\\change_fin_num\\fins_{i}', return_highest_T=True, tolerance=0.001)
+    hightest_Ts.append(highest_T)
+    graph_count += 1
+    with open('project_4\\natural_convection\\5pt_per_mm\\change_fin_num\\highest_T.txt', 'a') as file:
+        string = 'for fin number = ' + str(i) + ' highest_T : ' + str(highest_T)
         file.write(string + '\n')
 
-# how fin height and spacing affects the initial temperature
-fin_heights = [5, 10, 15, 20, 25, 30]
-fin_heights = [i*1e-3 for i in fin_heights]
-fin_spacings = [1, 2, 3, 4]
-fin_spacings = [i*1e-3 for i in fin_spacings]
-for fin_height in fin_heights:
-    for fin_spacing in fin_spacings:
-        lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,8000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height,fin_spacing,1e-3,20], nat_conv=True, max_repeat=40, delta=[1e-3,1e-3], tolerance=1e-5 )
-        with open('project_4\\natural_convection\\ini_T_change_fin_dim.txt', 'a') as file:
-            string = 'for fin height = ' + str(fin_height) + '  for fin spacing = ' + str(fin_spacing)+ ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
-            file.write(string + '\n')
+
+# # how fin height and spacing affects the initial temperature
+# fin_heights = [5, 10, 15, 20, 25, 30]
+# fin_heights = [i*1e-3 for i in fin_heights]
+# fin_spacings = [1, 2, 3, 4]
+# fin_spacings = [i*1e-3 for i in fin_spacings]
+# for fin_height in fin_heights:
+#     for fin_spacing in fin_spacings:
+#         lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,8000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height,fin_spacing,1e-3,20], nat_conv=True, max_repeat=40, delta=[1e-3,1e-3], tolerance=1e-5 )
+#         with open('project_4\\natural_convection\\ini_T_change_fin_dim.txt', 'a') as file:
+#             string = 'for fin height = ' + str(fin_height) + '  for fin spacing = ' + str(fin_spacing)+ ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
+#             file.write(string + '\n')
 
 
 
@@ -253,10 +278,10 @@ for fin_height in fin_heights:
 
 
 
-# changing fin heights and number of fins, spacing changed to 1mm, for max heat dissipiation
-for fin_num in range (20, 25):
-    for fin_height in range(5, 51, 5):
-        lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,4000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height*1e-3,1e-3,1e-3,fin_num], nat_conv=False, max_repeat=40, v=20, delta=[1e-3,1e-3], tolerance=1e-5 )
-        with open('project_4\\forced_convection\\ini_T_change_height_num.txt', 'a') as file:
-            string = 'for fin height = ' + str(fin_height) + '  number of fins = ' + str(fin_num) + ' last tried : ' + str(last_tried) + '  final change : ' + str(final_change)
-            file.write(string + '\n')
+# # changing fin heights and number of fins, spacing changed to 1mm, for max heat dissipiation
+# for fin_num in range (20, 25):
+#     for fin_height in range(5, 51, 5):
+#         lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,4000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height*1e-3,1e-3,1e-3,fin_num], nat_conv=False, max_repeat=40, v=20, delta=[1e-3,1e-3], tolerance=1e-5 )
+#         with open('project_4\\forced_convection\\ini_T_change_height_num.txt', 'a') as file:
+#             string = 'for fin height = ' + str(fin_height) + '  number of fins = ' + str(fin_num) + ' last tried : ' + str(last_tried) + '  final change : ' + str(final_change)
+#             file.write(string + '\n')
