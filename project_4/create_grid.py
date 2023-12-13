@@ -141,11 +141,11 @@ class grid():
         self.Q = np.pad(self.Q, (1,1), 'constant', constant_values=0)
             
         
-    def get_T(self, display=False, save=False, name='temp.png', graph_count=0):
+    def get_T(self, display=False, save=False, name='temp.png', graph_count=0, title='Heat map'):
         
         # scaling T back to kelvins
         Temp = np.copy(self.T)
-        Temp = Temp + 293.15   
+        Temp = Temp + 20   
     
         
         # shows the heat map visually
@@ -159,13 +159,15 @@ class grid():
                         mask[i, j] = 1
             
             plt.figure(str(self.d) + 'T' + str(self.T_fig_count) + str(graph_count))
-            plt.title('Heat map')
+            plt.title(title)
             # fig, ax = plt.subplots()
-            c = plt.imshow(np.ma.masked_array(Temp, mask), cmap='viridis', interpolation='nearest', aspect='auto')
+            c = plt.imshow(np.ma.masked_array(Temp, mask), cmap='viridis', interpolation='nearest')
             # ax.ticklabel_format(useOffset=False)
-            plt.colorbar(c, label='Temp [K]')
-            plt.xlabel('x $mm$')
-            plt.ylabel('y $mm$')
+            plt.colorbar(c, label='Temp [C]')
+            plt.xlabel('x $[mm]$')
+            plt.ylabel('y $[mm]$')
+            plt.xticks(np.arange(0, Temp.shape[1]+0.01, 100), np.arange(0, Temp.shape[1]+0.01, 100)*self.d*1e3)
+            plt.yticks(np.arange(0, Temp.shape[0]+0.01, 100), np.arange(0, Temp.shape[0]+0.01, 100)*self.d*1e3)
             if self.debug == True:
                 for i in range(self.T.shape[0]):
                     for j in range(self.T.shape[1]):
@@ -584,7 +586,7 @@ class grid():
     #         total_energy_final = np.sum(self.T)
     #         return total_energy_middle, total_energy_final
         
-    def iterate_K(self, max_iterations=1000, tolerance=1e-3, save=False, save_every=100, save_folder=None, graph_count=0, return_change=False, return_highest_T=False):
+    def iterate_K(self, max_iterations=1000, tolerance=1e-3, save=False, save_every=100, save_folder=None, graph_count=0, return_change=False, return_highest_T=False, title='Heat map'):
         # iterates the heat sink for a given number of iterations
         iteration = 0
         if save==True:
@@ -603,16 +605,18 @@ class grid():
             if iteration == max_iterations:
                 print('Did not converge after', iteration, 'iterations')
                 if save == True:
-                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
+                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count, title=title)
                 break
             
             # checking for convergence
             new_total_energy = np.sum(self.T)
             change = new_total_energy - total_energy
-            if (abs(change) < tolerance and iteration > 12345) or (iteration>1000 and abs(change) > abs(previous_change)):
+            if (abs(change) < tolerance and iteration > 12345) or (iteration>1234 and abs(change) > abs(previous_change)):
+                # setting  minimum number of iterations to make sure it has converged
+                # also checking if the change is increasing, if so, then it has already reached the minimum
                 print('Converged after', iteration, 'iterations')
                 if save == True:
-                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
+                    self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count, title=title)
                 if return_change:
                     return -1
                 break
@@ -622,7 +626,7 @@ class grid():
             # saving at every given interval
             if save==True and iteration % save_every == 0:
                 # print('iteration', iteration, 'change', change)
-                self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
+                self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count, title=title)
             
             print('iteration', iteration, 'change', change)
 

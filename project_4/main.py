@@ -98,14 +98,12 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 # second section: using the predetermined optimal initial temperature to solve
 
 ############################### for mp only ###############################
-#lower_limit, upper_limit, last_tried = find_ini_T(500,4000, max_iterations=3000, case_dim=None, sink_dim=None, nat_conv=False, max_repeat=10, v=i*10 )
-#     with open('project_4\\only_mp_forced_convection\\ini_T.txt', 'a') as file:
-#         string = 'for speed v = ' + str(i*10) + ' lower limit is : ' + str(lower_limit) + '  upper limit : ' + str(upper_limit) + ' last tried : ' + str(last_tried)
-#         file.write(string + '\n')
-# mp = cg.grid(case_dim=None, sink_dim=None, nat_conv=False, delta=[0.2e-3,0.2e-3], ini_temp=3155)   # 8969
-# # mp.get_K(display=False, save=True, name='project_4/only_mp_natural_convection/K.png')
-# # mp.get_Q(display=False, save=True, name='project_4/only_mp_natural_convection/Q.png')
-# mp.iterate_K(max_iterations=100000, save=True, save_every=1000, save_folder='only_mp_forced_convection\\5pt_per_mm\\v_20', tolerance=9e-3)
+# lower_limit, upper_limit, last_tried = find_ini_T(6000,10000, max_iterations=300, case_dim=None, sink_dim=None, nat_conv=True, max_repeat=10)
+# with open('project_4\\only_mp_natural_convection\\ini_T.txt', 'a') as file:
+#     string = 'last tried : ' + str(last_tried)
+#     file.write(string + '\n')
+# mp = cg.grid(case_dim=None, sink_dim=None, nat_conv=True, delta=[0.2e-3,0.2e-3], ini_temp=last_tried)
+# mp.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder='only_mp_natural_convection\\5_pt_per_mm', tolerance=1e-3)
 
 
 ############################### when ceramic case is present ###############################
@@ -118,7 +116,7 @@ with open('project_4\\no_sink_natural_convection\\ini_T.txt', 'r') as file:
     last_tried = file.readlines()
 last_tried = float(last_tried[0].split(':')[1].strip())
 with_case = cg.grid(sink_dim=None, nat_conv=True, delta=[0.1e-3,0.1e-3], ini_temp=last_tried)
-with_case.iterate_K(max_iterations=10000, save=True, save_every=10000, save_folder='no_sink_natural_convection', tolerance=1e-4)
+with_case.iterate_K(max_iterations=10000, save=True, save_every=10000, save_folder='no_sink_natural_convection', tolerance=1e-3, title='No heat sink, Natural convection')
 
 
 ############################### for heat sink ###############################s
