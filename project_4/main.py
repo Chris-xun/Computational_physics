@@ -151,8 +151,8 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 #         string = 'for fin number = ' + str(i) + ' highest_T : ' + str(highest_T)
 #         file.write(string + '\n')
 
-sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], nat_conv=True, delta=[0.25e-3,0.25e-3], ini_temp=1207.04345703125)
-highest_T = sink.iterate_K(max_iterations=20000, save=True, save_every=20000, save_folder=f'natural_convection\\5pt_per_mm\\change_fin_num\\fins_{20}', return_highest_T=True, tolerance=0.0001, title='Heat sink with 20 fins, Natural convection')
+# sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,20], nat_conv=True, delta=[0.25e-3,0.25e-3], ini_temp=1207.04345703125)
+# highest_T = sink.iterate_K(max_iterations=20000, save=True, save_every=20000, save_folder=f'natural_convection\\5pt_per_mm\\change_fin_num\\fins_{20}', return_highest_T=True, tolerance=0.0001, title='Heat sink with 20 fins, Natural convection')
 
 # # how fin height and spacing affects the initial temperature
 # fin_heights = [5, 10, 15, 20, 25, 30]
@@ -257,7 +257,7 @@ highest_T = sink.iterate_K(max_iterations=20000, save=True, save_every=20000, sa
 #     graph_count += 1
 
 
-# it would be interesting to also explore the effect of varying the amount of fins as well as the speed of the wind
+# # it would be interesting to also explore the effect of varying the amount of fins as well as the speed of the wind
 # data = np.zeros((40, 10))
 # for fin_num in range (1, 41):
 #     for wind_speed in range(10, 101, 10):
@@ -266,43 +266,46 @@ highest_T = sink.iterate_K(max_iterations=20000, save=True, save_every=20000, sa
 #         with open('project_4\\forced_convection\\ini_T.txt', 'a') as file:
 #             string = 'for speed v = ' + str(wind_speed) + '  number of fins = ' + str(fin_num) + ' last tried : ' + str(last_tried) + '  final change : ' + str(final_change)
 #             file.write(string + '\n')
+
 # with open('project_4\\forced_convection\\ini_T.txt', 'a') as file:
 #     string = str(data)
 #     file.write(string + '\n')
     
 
-# # getting the last tried values from the ini_T.txt file
-# with open('project_4\\forced_convection\\ini_T.txt', 'r') as file:
-#     lines = file.readlines()
-# last_tried_values = []
-# for line in lines:
-#     if 'last tried :' in line:
-#         last_tried = line.split(':')[1].strip()
-#         last_tried = float(last_tried.split(' ')[0])
-#         last_tried_values.append(last_tried)
-# last_tried_values = np.array(last_tried_values)
-# ini_temps = np.reshape(last_tried_values, (40, 10))
+# getting the last tried values from the ini_T.txt file
+with open('project_4\\forced_convection\\ini_T.txt', 'r') as file:
+    lines = file.readlines()
+last_tried_values = []
+lines = lines[1:]
+for line in lines:
+    if 'last tried :' in line:
+        last_tried = line.split(':')[1].strip()
+        last_tried = float(last_tried.split(' ')[0])
+        last_tried_values.append(last_tried)
+last_tried_values = np.array(last_tried_values)
+ini_temps = np.reshape(last_tried_values, (40, 10))
 
 
-# highest_Ts = np.zeros((40, 10))
-# for i in range(0, 10):
-#     for j in range(0, 40):
-#         ini_temp = ini_temps[j, i]
-#         sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,j+1], nat_conv=False, delta=[0.5e-3,0.5e-3], v=(i+1)*10, ini_temp=ini_temp)
-#         try:
-#             os.mkdir(f'project_4\\forced_convection\\5pt_per_mm\\v_{(i+1)*10}_fins_{j+1}')
-#         except:
-#             pass
-#         highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'forced_convection\\5pt_per_mm\\v_{(i+1)*10}_fins_{j+1}' , return_highest_T=True, tolerance=0.001)
-#         highest_Ts[j, i] = highest_T
-#         graph_count += 1
-#         with open('project_4\\forced_convection\\highest_T.txt', 'a') as file:
-#             string = 'for speed v = ' + str((i+1)*10) + '  number of fins = ' + str(j+1) + ' highest_T : ' + str(highest_T)
-#             file.write(string + '\n')
-# print(highest_Ts)
-# with open('project_4\\forced_convection\\highest_T.txt', 'a') as file:
-#     string = str(highest_Ts)
-#     file.write(string + '\n')
+highest_Ts = np.zeros((40, 10))
+for i in range(0, 10):
+    for j in range(0, 40):
+        if (i == 3 and j == 39):
+            ini_temp = ini_temps[j, i]
+            sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,j+1], nat_conv=False, delta=[0.5e-3,0.5e-3], v=(i+1)*10, ini_temp=ini_temp)
+            try:
+                os.mkdir(f'project_4\\forced_convection\\5pt_per_mm\\change_speed__fin\\v_{(i+1)*10}_fins_{j+1}')
+            except:
+                pass
+            highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'forced_convection\\5pt_per_mm\\change_speed__fin\\v_{(i+1)*10}_fins_{j+1}' , return_highest_T=True, tolerance=0.001)
+            highest_Ts[j, i] = highest_T
+            graph_count += 1
+            with open('project_4\\forced_convection\\highest_T.txt', 'a') as file:
+                string = 'for speed v = ' + str((i+1)*10) + '  number of fins = ' + str(j+1) + ' highest_T : ' + str(highest_T)
+                file.write(string + '\n')
+print(highest_Ts)
+with open('project_4\\forced_convection\\highest_T.txt', 'a') as file:
+    string = str(highest_Ts)
+    file.write(string + '\n')
 
 
 ## to do

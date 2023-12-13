@@ -10,6 +10,7 @@ for line in lines:
     temp = line.split(':')[1].strip()
     tempertures.append(float(temp))
 temperatures = np.array(tempertures)
+temperatures = temperatures + 20
 temperatures = temperatures.reshape(4,6)
 
 print(temperatures)
