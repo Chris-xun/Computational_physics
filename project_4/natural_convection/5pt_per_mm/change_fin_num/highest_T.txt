@@ -1,0 +1,10 @@
+for fin number = 1 highest_T : 5697.958348010052
+for fin number = 2 highest_T : 4180.8528617741
+for fin number = 3 highest_T : 3343.0724834409243
+for fin number = 4 highest_T : 2804.768059858805
+for fin number = 5 highest_T : 2431.256609499692
+for fin number = 6 highest_T : 2156.103229596171
+for fin number = 7 highest_T : 1945.0049594307427
+for fin number = 8 highest_T : 1768.500148321389
+for fin number = 9 highest_T : 1620.8588169937425
+for fin number = 10 highest_T : 1591.9214008597762
