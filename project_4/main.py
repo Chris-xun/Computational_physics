@@ -162,7 +162,19 @@ for i in range (1, 40):
 #             string = 'for fin height = ' + str(fin_height) + '  for fin spacing = ' + str(fin_spacing)+ ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
 #             file.write(string + '\n')
 
-
+with open('project_4\\natural_convection\\ini_T_change_fin_dim.txt', 'r') as file:
+    lines = file.readlines()
+last_tried_values = []
+for line in lines:
+    if 'last tried : ' in line:
+        last_tried = line.split(':')[1].strip()
+        last_tried = last_tried.split(' ')[0].strip()
+        last_tried = float(last_tried)
+        last_tried_values.append(last_tried)
+last_tried_values = np.array(last_tried_values)
+ini_temps = np.reshape(last_tried_values, (6, 4))
+print(ini_temps)
+hightest_Ts = np.zeros((6, 4))
 
 
 ##################################################################################
@@ -277,7 +289,7 @@ for i in range (1, 40):
 #     file.write(string + '\n')
 
 
-
+### to do
 # # changing fin heights and number of fins, spacing changed to 1mm, for max heat dissipiation
 # for fin_num in range (20, 25):
 #     for fin_height in range(5, 51, 5):
