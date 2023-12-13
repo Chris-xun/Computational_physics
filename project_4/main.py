@@ -162,20 +162,34 @@ for i in range (1, 40):
 #             string = 'for fin height = ' + str(fin_height) + '  for fin spacing = ' + str(fin_spacing)+ ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
 #             file.write(string + '\n')
 
-# with open('project_4\\natural_convection\\ini_T_change_fin_dim.txt', 'r') as file:
-#     lines = file.readlines()
-# last_tried_values = []
-# for line in lines:
-#     if 'last tried : ' in line:
-#         last_tried = line.split(':')[1].strip()
-#         last_tried = last_tried.split(' ')[0].strip()
-#         last_tried = float(last_tried)
-#         last_tried_values.append(last_tried)
-# last_tried_values = np.array(last_tried_values)
-# ini_temps = np.reshape(last_tried_values, (6, 4))
-# print(ini_temps)
-# hightest_Ts = np.zeros((6, 4))
+with open('project_4\\natural_convection\\ini_T_change_fin_dim.txt', 'r') as file:
+    lines = file.readlines()
+last_tried_values = []
+for line in lines:
+    if 'last tried : ' in line:
+        last_tried = line.split(':')[1].strip()
+        last_tried = last_tried.split(' ')[0].strip()
+        last_tried = float(last_tried)
+        last_tried_values.append(last_tried)
+last_tried_values = np.array(last_tried_values)
+ini_temps = np.reshape(last_tried_values, (6, 4))
 
+hightest_Ts = np.zeros((6, 4))
+for i in range (1, 6):
+    for j in range (0, 4):
+        if i == 1 and j == 0:
+            continue
+        sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,(i+1)*5e-3,(j+1)*1e-3,1e-3,20], nat_conv=True, delta=[0.5e-3,0.5e-3], ini_temp=ini_temps[i, j])
+        try:
+            os.mkdir(f'project_4\\natural_convection\\5pt_per_mm\\change_fin_dim\\height_{(i+1)*5}_spacing_{j+1}')
+        except:
+            pass
+        highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'natural_convection\\5pt_per_mm\\change_fin_dim\\height_{(i+1)*5}_spacing_{j+1}', return_highest_T=True, tolerance=0.001)
+        hightest_Ts[i, j] = highest_T
+        graph_count += 1
+        with open('project_4\\natural_convection\\5pt_per_mm\\change_fin_dim\\highest_T.txt', 'a') as file:
+            string = 'for fin height = ' + str((i+1)*5) + '  for fin spacing = ' + str(j+1)+ ' highest_T : ' + str(highest_T)
+            file.write(string + '\n')
 
 ##################################################################################
 ############################# forced convections #################################
