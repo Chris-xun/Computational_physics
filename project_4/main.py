@@ -137,9 +137,6 @@ for fin_height in fin_heights:
             string = 'for fin height = ' + str(fin_height) + '  for fin spacing = ' + str(fin_spacing)+ ' last tried : ' + str(last_tried) + '  change : ' + final_change
             file.write(string + '\n')
 
-# with_sink = cg.grid(nat_conv=True, delta=[1e-3,1e-3],  ini_temp=1000)
-# with_sink.iterate_K(max_iterations=2000000, save=True, save_every=10000, save_folder='natural_convection\\1pt_per_mm',graph_count=graph_count)
-
 
 
 
