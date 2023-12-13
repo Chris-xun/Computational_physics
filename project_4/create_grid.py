@@ -164,6 +164,8 @@ class grid():
             c = plt.imshow(np.ma.masked_array(Temp, mask), cmap='viridis', interpolation='nearest', aspect='auto')
             # ax.ticklabel_format(useOffset=False)
             plt.colorbar(c, label='Temp [K]')
+            plt.xlabel('x $mm$')
+            plt.ylabel('y $mm$')
             if self.debug == True:
                 for i in range(self.T.shape[0]):
                     for j in range(self.T.shape[1]):
