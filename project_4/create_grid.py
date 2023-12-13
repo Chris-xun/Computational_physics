@@ -589,7 +589,7 @@ class grid():
             self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png')
         
         total_energy = np.sum(self.T)
-        total_energy_middle = 0
+        previous_change = 10000
 
         while True:
             
@@ -607,7 +607,7 @@ class grid():
             # checking for convergence
             new_total_energy = np.sum(self.T)
             change = new_total_energy - total_energy
-            if abs(change) < tolerance and iteration > 12345:
+            if (abs(change) < tolerance and iteration > 12345) or abs(change) > abs(previous_change):
                 print('Converged after', iteration, 'iterations')
                 if save == True:
                     self.get_T(save=True, name='project_4/'+str(save_folder)+'/after_'+str(iteration)+'_iterations.png', graph_count=graph_count)
@@ -615,6 +615,7 @@ class grid():
                     return -1
                 break
             total_energy = new_total_energy
+            previous_change = change
             
             # saving at every given interval
             if save==True and iteration % save_every == 0:
