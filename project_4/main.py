@@ -135,19 +135,21 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 #         last_tried = float(last_tried)
 #         last_tried_values.append(last_tried)
 
-# hightest_Ts = []
-# for i in range (1, 40):
-#     sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,i], nat_conv=True, delta=[0.2e-3,0.2e-3], ini_temp=last_tried_values[i-1])
-#     try:
-#         os.mkdir(f'project_4\\natural_convection\\5pt_per_mm\\change_fin_num\\fins_{i}')
-#     except:
-#         pass
-#     highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'natural_convection\\5pt_per_mm\\change_fin_num\\fins_{i}', return_highest_T=True, tolerance=0.001)
-#     hightest_Ts.append(highest_T)
-#     graph_count += 1
-#     with open('project_4\\natural_convection\\5pt_per_mm\\change_fin_num\\highest_T.txt', 'a') as file:
-#         string = 'for fin number = ' + str(i) + ' highest_T : ' + str(highest_T)
-#         file.write(string + '\n')
+hightest_Ts = []
+for i in range (1, 40):
+    if i < 11:
+        continue
+    sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,i], nat_conv=True, delta=[0.5e-3,0.5e-3], ini_temp=last_tried_values[i-1])
+    try:
+        os.mkdir(f'project_4\\natural_convection\\5pt_per_mm\\change_fin_num\\fins_{i}')
+    except:
+        pass
+    highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'natural_convection\\5pt_per_mm\\change_fin_num\\fins_{i}', return_highest_T=True, tolerance=0.001)
+    hightest_Ts.append(highest_T)
+    graph_count += 1
+    with open('project_4\\natural_convection\\5pt_per_mm\\change_fin_num\\highest_T.txt', 'a') as file:
+        string = 'for fin number = ' + str(i) + ' highest_T : ' + str(highest_T)
+        file.write(string + '\n')
 
 
 # # how fin height and spacing affects the initial temperature
@@ -303,11 +305,40 @@ for i in range (1, 6):
 #     file.write(string + '\n')
 
 
-### to do
-# # changing fin heights and number of fins, spacing changed to 1mm, for max heat dissipiation
+## to do
+# changing fin heights and number of fins, spacing changed to 1mm, for max heat dissipiation
 # for fin_num in range (20, 25):
 #     for fin_height in range(5, 51, 5):
 #         lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,4000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height*1e-3,1e-3,1e-3,fin_num], nat_conv=False, max_repeat=40, v=20, delta=[1e-3,1e-3], tolerance=1e-5 )
 #         with open('project_4\\forced_convection\\ini_T_change_height_num.txt', 'a') as file:
 #             string = 'for fin height = ' + str(fin_height) + '  number of fins = ' + str(fin_num) + ' last tried : ' + str(last_tried) + '  final change : ' + str(final_change)
+#             file.write(string + '\n')
+
+# with open('project_4\\forced_convection\\ini_T_change_height_num.txt', 'r') as file:
+#     lines = file.readlines()
+# last_tried_values = []
+# for line in lines:
+#     if 'last tried :' in line:
+#         last_tried = line.split(':')[1].strip()
+#         last_tried = float(last_tried.split(' ')[0])
+#         last_tried_values.append(last_tried)
+# last_tried_values = np.array(last_tried_values)
+# ini_temps = np.reshape(last_tried_values, (5, 10))
+
+# highest_Ts = np.zeros((5, 10))
+# for i in range(0, 10):
+#     for j in range(0, 5):
+#         if j == 0 and i == 0:
+#             continue
+#         ini_temp = ini_temps[j, i]
+#         sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,(j+1)*5e-3,1e-3,1e-3,i+20], nat_conv=False, delta=[0.5e-3,0.5e-3], v=20, ini_temp=ini_temp)
+#         try:
+#             os.mkdir(f'project_4\\forced_convection\\5pt_per_mm\\change_fin_height__num\\height_{(j+1)*5}_fins_{i+20}')
+#         except:
+#             pass
+#         highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'forced_convection\\5pt_per_mm\\change_fin_height__num\\height_{(j+1)*5}_fins_{i+20}' , return_highest_T=True, tolerance=0.001)
+#         highest_Ts[j, i] = highest_T
+#         graph_count += 1
+#         with open('project_4\\forced_convection\\change_fin_height__num_highest_T.txt', 'a') as file:
+#             string = 'for fin height = ' + str((j+1)*5) + '  number of fins = ' + str(i+20) + ' highest_T : ' + str(highest_T)
 #             file.write(string + '\n')
