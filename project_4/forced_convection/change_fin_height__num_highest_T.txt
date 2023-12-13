@@ -1,0 +1,15 @@
+for fin height = 5  number of fins = 20 highest_T : 417.63590864775796
+for fin height = 10  number of fins = 20 highest_T : 272.3044373439978
+for fin height = 15  number of fins = 20 highest_T : 211.49646152090372
+for fin height = 20  number of fins = 20 highest_T : 179.15684301908775
+for fin height = 20  number of fins = 20 highest_T : 177.54474200095603
+for fin height = 25  number of fins = 20 highest_T : 157.69058154087097
+for fin height = 5  number of fins = 21 highest_T : 247.81559577084423
+for fin height = 10  number of fins = 21 highest_T : 191.17094027109533
+for fin height = 15  number of fins = 21 highest_T : 162.211624985991
+for fin height = 20  number of fins = 21 highest_T : 171.88676083980468
+for fin height = 25  number of fins = 21 highest_T : 153.9261633909744
+for fin height = 5  number of fins = 22 highest_T : 397.7681152105787
+for fin height = 10  number of fins = 22 highest_T : 257.2222672841957
+for fin height = 15  number of fins = 22 highest_T : 200.4254455160743
+for fin height = 20  number of fins = 22 highest_T : 169.80165348932772
