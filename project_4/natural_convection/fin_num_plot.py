@@ -27,8 +27,8 @@ def f(x, a,b):
     return a*x + b
 popt, pcov = opt.curve_fit(f,  np.linspace(20,39,19),  temperatures[20:])
 plt.plot(np.linspace(1,39,39), f(np.linspace(1,39,39), *popt))
+print(popt)
 
-
-plt.show()
+# plt.show()
 #saving plot
 plt.savefig('project_4\\natural_convection\\fin_num.png')
