@@ -62,7 +62,7 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
             break
 
         system = cg.grid(case_dim=case_dim, sink_dim=sink_dim, nat_conv=nat_conv, delta=delta, ini_temp=temp_to_try, v=v)
-        final_change = system.iterate_K(max_iterations=max_iterations, return_=True, tolerance=tolerance)
+        final_change = system.iterate_K(max_iterations=max_iterations, return_change=True, tolerance=tolerance)
         
         # if converged no need to continue trying
         if final_change == -1:
@@ -120,9 +120,9 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 ############################### for heat sink ###############################s
 # how number of fins affects the initial temperature
 for i in range (1, 40):
-    lower_limit, upper_limit, last_tried, final_change = find_ini_T(500,4000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,i], nat_conv=True, max_repeat=40, delta=[1e-3,1e-3], tolerance=1e-5 )
-    with open('project_4\\forced_convection\\ini_T_change_fin_num.txt', 'a') as file:
-        string = 'for fin number = ' + str(i) + ' last tried : ' + str(last_tried) + '  change : ' + final_change
+    lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,8000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,i], nat_conv=True, max_repeat=40, delta=[1e-3,1e-3], tolerance=1e-5 )
+    with open('project_4\\natural_convection\\ini_T_change_fin_num.txt', 'a') as file:
+        string = 'for fin number = ' + str(i) + ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
         file.write(string + '\n')
 
 # how fin height and spacing affects the initial temperature
@@ -132,9 +132,9 @@ fin_spacings = [1, 2, 3, 4]
 fin_spacings = [i*1e-3 for i in fin_spacings]
 for fin_height in fin_heights:
     for fin_spacing in fin_spacings:
-        lower_limit, upper_limit, last_tried, final_change = find_ini_T(500,4000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height,fin_spacing,1e-3,20], nat_conv=True, max_repeat=40, delta=[1e-3,1e-3], tolerance=1e-5 )
-        with open('project_4\\forced_convection\\ini_T_change_fin_dim.txt', 'a') as file:
-            string = 'for fin height = ' + str(fin_height) + '  for fin spacing = ' + str(fin_spacing)+ ' last tried : ' + str(last_tried) + '  change : ' + final_change
+        lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,8000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height,fin_spacing,1e-3,20], nat_conv=True, max_repeat=40, delta=[1e-3,1e-3], tolerance=1e-5 )
+        with open('project_4\\natural_convection\\ini_T_change_fin_dim.txt', 'a') as file:
+            string = 'for fin height = ' + str(fin_height) + '  for fin spacing = ' + str(fin_spacing)+ ' last tried : ' + str(last_tried) + '  change : ' + str(final_change)
             file.write(string + '\n')
 
 # with_sink = cg.grid(nat_conv=True, delta=[1e-3,1e-3],  ini_temp=1000)
@@ -259,7 +259,7 @@ for fin_height in fin_heights:
 # changing fin heights and number of fins, spacing changed to 1mm, for max heat dissipiation
 for fin_num in range (20, 25):
     for fin_height in range(5, 51, 5):
-        lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,2500, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height*1e-3,1e-3,1e-3,fin_num], nat_conv=False, max_repeat=40, v=20, delta=[1e-3,1e-3], tolerance=1e-5 )
+        lower_limit, upper_limit, last_tried, final_change = find_ini_T(300,4000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,fin_height*1e-3,1e-3,1e-3,fin_num], nat_conv=False, max_repeat=40, v=20, delta=[1e-3,1e-3], tolerance=1e-5 )
         with open('project_4\\forced_convection\\ini_T_change_height_num.txt', 'a') as file:
             string = 'for fin height = ' + str(fin_height) + '  number of fins = ' + str(fin_num) + ' last tried : ' + str(last_tried) + '  final change : ' + str(final_change)
             file.write(string + '\n')
