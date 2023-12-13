@@ -224,12 +224,12 @@ highest_Ts = np.zeros((40, 10))
 for i in range(0, 10):
     for j in range(0, 40):
         ini_temp = ini_temps[j, i]
-        sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,j+1], nat_conv=False, delta=[1e-3,1e-3], v=(i+1)*10, ini_temp=ini_temp)
+        sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,30e-3,2e-3,1e-3,j+1], nat_conv=False, delta=[0.5e-3,0.5e-3], v=(i+1)*10, ini_temp=ini_temp)
         try:
             os.mkdir(f'project_4\\forced_convection\\5pt_per_mm\\v_{(i+1)*10}_fins_{j+1}')
         except:
             pass
-        highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'forced_convection\\5pt_per_mm\\v_{(i+1)*10}_fins_{j+1}' , return_highest_T=True, tolerance=0.1)
+        highest_T = sink.iterate_K(max_iterations=100000, save=True, save_every=100000, save_folder=f'forced_convection\\5pt_per_mm\\v_{(i+1)*10}_fins_{j+1}' , return_highest_T=True, tolerance=0.001)
         highest_Ts[j, i] = highest_T
         graph_count += 1
         with open('project_4\\forced_convection\\highest_T.txt', 'a') as file:

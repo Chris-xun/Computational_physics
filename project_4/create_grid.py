@@ -161,7 +161,7 @@ class grid():
             plt.figure(str(self.d) + 'T' + str(self.T_fig_count) + str(graph_count))
             plt.title('Heat map')
             # fig, ax = plt.subplots()
-            c = plt.imshow(np.ma.masked_array(Temp, mask), cmap='bwr', interpolation='nearest', aspect='auto')
+            c = plt.imshow(np.ma.masked_array(Temp, mask), interpolation='nearest', aspect='auto', cmap='viridis')
             # ax.ticklabel_format(useOffset=False)
             plt.colorbar(c, label='Temp [K]')
             if self.debug == True:
