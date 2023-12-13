@@ -175,9 +175,11 @@ last_tried_values = np.array(last_tried_values)
 ini_temps = np.reshape(last_tried_values, (6, 4))
 
 hightest_Ts = np.zeros((6, 4))
-for i in range (0, 6):
+for i in range (1, 6):
     for j in range (0, 4):
-        sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,(i+1)*5e-3,(j+1)*1e-3,1e-3,20], nat_conv=True, delta=[0.2e-3,0.2e-3], ini_temp=ini_temps[i, j])
+        if i == 1 and j == 0:
+            continue
+        sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,(i+1)*5e-3,(j+1)*1e-3,1e-3,20], nat_conv=True, delta=[0.5e-3,0.5e-3], ini_temp=ini_temps[i, j])
         try:
             os.mkdir(f'project_4\\natural_convection\\5pt_per_mm\\change_fin_dim\\height_{(i+1)*5}_spacing_{j+1}')
         except:
