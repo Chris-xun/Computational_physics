@@ -397,3 +397,9 @@ def find_ini_T(lower_limit, upper_limit, max_iterations=2000, max_repeat=20, cas
 #         with open('project_4\\forced_convection\\change_fin_height__num_highest_T.txt', 'a') as file:
 #             string = 'for fin height = ' + str((i+1)*5) + '  number of fins = ' + str(j+20) + ' highest_T : ' + str(highest_T)
 #             file.write(string + '\n')
+
+# lower_limit, upper_limit, last_tried, final_change = find_ini_T(50,1000, max_iterations=300, case_dim=[20e-3,2e-3], sink_dim=[4e-3,60e-3,1e-3,1e-3,40], nat_conv=False, max_repeat=40, v=20, delta=[1e-3,1e-3], tolerance=1e-5 )
+sink = cg.grid(case_dim=[20e-3,2e-3], sink_dim=[4e-3,60e-3,1e-3,1e-3,40], nat_conv=False, delta=[0.5e-3,0.5e-3], v=20, ini_temp=319)
+# os.mkdir(f'project_4\\forced_convection\\5pt_per_mm\\change_fin_height__num\\height_60_fins_40')
+highest_T = sink.iterate_K(max_iterations=20000, save=True, save_every=20000, save_folder=f'forced_convection\\5pt_per_mm\\change_fin_height__num\\height_60_fins_40' , return_highest_T=True, tolerance=0.001)
+print(highest_T)
