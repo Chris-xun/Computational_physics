@@ -29,6 +29,7 @@ def f(x, a,b):
     return a*x + b
 popt, pcov = opt.curve_fit(f,  np.linspace(15,40,25),  temperatures[15:])
 plt.plot(np.linspace(1,40,40), f(np.linspace(1,40,40), *popt))
-plt.show()
+print(popt)
+# plt.show()
 #saving plot
-# plt.savefig('project_4\\forced_convection\\fin_num_20ms.png')
+plt.savefig('project_4\\forced_convection\\fin_num_20ms.png')

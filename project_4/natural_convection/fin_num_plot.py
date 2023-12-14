@@ -14,7 +14,7 @@ temperatures = temperatures + 20
 
 # Plot data
 plt.title('Peak Microprocessor Temperature vs. Number of fins')
-plt.plot(np.linspace(1,39,39),temperatures, 'x')
+plt.plot(np.linspace(1,40,40),temperatures, 'x')
 plt.grid()
 plt.xlabel('Number of fins')
 plt.ylabel('Temperature [$^\circ$C]')
@@ -25,8 +25,8 @@ plt.ylabel('Temperature [$^\circ$C]')
 #     return a*np.exp(-b*x) + c
 def f(x, a,b):
     return a*x + b
-popt, pcov = opt.curve_fit(f,  np.linspace(20,39,19),  temperatures[20:])
-plt.plot(np.linspace(1,39,39), f(np.linspace(1,39,39), *popt))
+popt, pcov = opt.curve_fit(f,  np.linspace(20,40,20),  temperatures[20:])
+plt.plot(np.linspace(1,40,40), f(np.linspace(1,40,40), *popt))
 print(popt)
 
 # plt.show()

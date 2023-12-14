@@ -37,3 +37,4 @@ for fin number = 36 highest_T : 606.8716697343019
 for fin number = 37 highest_T : 595.3286983225214
 for fin number = 38 highest_T : 584.5472447934915
 for fin number = 39 highest_T : 573.6001620838455
+for fin number = 39 highest_T : 563.3840000000001
